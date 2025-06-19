@@ -23,7 +23,7 @@ import org.apache.commons.lang3.ArrayUtils;
 //@PreMatching
 //@Priority(1)
 @Slf4j
-public class AutoUserInjectFilter extends BaseAuthorizationController implements ContainerRequestFilter {
+public class AutoInjectLoginAccountIdFilter extends BaseAuthorizationController implements ContainerRequestFilter {
 
     @Inject
     ObjectMapper objectMapper;

@@ -24,13 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 @ApplicationScoped
 @Slf4j
 public class EtfT0Service extends BaseCrudService<Long, EtfT0PO, EtfT0DAO> {
-    protected final void doIgnoreException(DoSomethingCallback callback) {
-        try {
-            callback.doSomething();
-        } catch (Exception e) {
-            log.error("error ", e);
-        }
-    }
+
 
     public void refresh() {
         // 获取沪市t0
@@ -96,8 +90,5 @@ public class EtfT0Service extends BaseCrudService<Long, EtfT0PO, EtfT0DAO> {
         return new BigDecimal(replaced);
     }
 
-    @FunctionalInterface
-    public interface DoSomethingCallback {
-        void doSomething();
-    }
+
 }

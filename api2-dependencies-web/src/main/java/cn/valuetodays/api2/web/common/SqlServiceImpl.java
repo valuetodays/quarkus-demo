@@ -66,7 +66,15 @@ public class SqlServiceImpl {
         } catch (Exception e) {
             log.error("error when queryForObject", e);
         }
-        return null;
+        return List.of();
     }
 
+    public int[] batchUpdate(String sql, List<Object[]> batchArgs) {
+        try (Connection conn = dataSource.getConnection()) {
+            return runner.batch(conn, sql, batchArgs.toArray(new Object[0][]));
+        } catch (Exception e) {
+            log.error("error when queryForObject", e);
+        }
+        return new int[0];
+    }
 }

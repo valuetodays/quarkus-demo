@@ -58,6 +58,16 @@ public final class NumberUtils {
         return computeBy(value, WAN);
     }
 
+    /* <<<<<<<<<<<<<<  ✨ Windsurf Command ⭐ >>>>>>>>>>>>>>>> */
+
+    /**
+     * Divide {@code value} by {@code unit} and round to 2 decimal places.
+     *
+     * @param value the value to be divided
+     * @param unit  the unit to divide by
+     * @return the result of the division, rounded to 2 decimal places
+     */
+    /* <<<<<<<<<<  e1e63aeb-63fe-4994-9cb0-37e7f2b46cab  >>>>>>>>>>> */
     public static BigDecimal computeBy(BigDecimal value, BigDecimal unit) {
         if (Objects.isNull(value)) {
             return BigDecimal.ZERO;

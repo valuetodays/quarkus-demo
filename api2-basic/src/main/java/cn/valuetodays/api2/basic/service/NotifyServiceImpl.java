@@ -1,8 +1,14 @@
 package cn.valuetodays.api2.basic.service;
 
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 import cn.valuetodays.api2.basic.enums.NotifyEnums;
 import cn.valuetodays.api2.basic.vo.BarkDict;
 import cn.valuetodays.api2.basic.vo.PushVocechatTextReq;
+import cn.valuetodays.api2.web.common.NotifyService;
 import cn.vt.util.HttpClient4Utils;
 import io.quarkus.redis.datasource.RedisDataSource;
 import io.quarkus.redis.datasource.keys.KeyCommands;
@@ -10,11 +16,6 @@ import io.quarkus.redis.datasource.value.ValueCommands;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * .
@@ -24,7 +25,7 @@ import java.util.Objects;
  */
 @ApplicationScoped
 @Slf4j
-public class NotifyServiceImpl {
+public class NotifyServiceImpl implements NotifyService {
     private static final String DICT_TYPE_CACHE_KEY = "cache.dictType";
     @Inject
     DictTypeService dictTypeService;
@@ -89,6 +90,7 @@ public class NotifyServiceImpl {
         );
     }
 
+    @Override
     public void notifyStockMinutePrice() {
         String content = "股票分时价格数据更新完毕";
         this.notify(
@@ -109,6 +111,7 @@ public class NotifyServiceImpl {
         );
     }
 
+    @Override
     public void notifyNoCookie(String domain) {
         NotifyEnums.Group apiAlarm = NotifyEnums.Group.API_ALARM;
         final String title = "[" + apiAlarm.name() + "]no cookie: " + domain;

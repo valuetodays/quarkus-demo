@@ -7,11 +7,15 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import cn.valuetodays.api2.module.fortune.channel.StockTradeLogParser;
 import cn.valuetodays.api2.module.fortune.channel.StockTradeLogParserFactory;
+import cn.valuetodays.api2.module.fortune.dao.StockDAO;
 import cn.valuetodays.api2.module.fortune.dao.StockTradeDAO;
+import cn.valuetodays.api2.module.fortune.persist.StockPO;
 import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
 import cn.valuetodays.api2.module.fortune.reqresp.AnalyzeHedgeEarnedChartReq;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
@@ -21,8 +25,10 @@ import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums.TradeType;
 import cn.vt.util.DateUtils;
 import cn.vt.util.StringExUtils;
+import cn.vt.vo.NameValueVo;
 import cn.vt.web.req.SimpleTypesReq;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +48,8 @@ import org.apache.commons.lang3.tuple.Pair;
 public class StockTradeServiceImpl
     extends BaseCrudService<Long, StockTradePO, StockTradeDAO> {
 
+    @Inject
+    StockDAO stockDAO;
     /*
     public AutoToHedgeTradeResp autoToHedge(int days) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
@@ -366,14 +374,14 @@ public class StockTradeServiceImpl
         return getRepository().findAllByHedgeIdGreaterThanOrderByIdDesc(0L);
     }
 
-    /*
+
     public List<NameValueVo> findCodes() {
         final List<String> distinctCodes = getRepository().findDistinctCodes();
         final List<StockPO> stockPOList = stockDAO.findAllByCodeIn(distinctCodes);
         final Map<String, String> codeAndStockMap = stockPOList.stream().collect(Collectors.toMap(StockPO::getCode, StockPO::getName));
         return distinctCodes.stream().map(e -> NameValueVo.of(codeAndStockMap.getOrDefault(e, e), e)).toList();
     }
-*/
+
     public int countTradedDays() {
         return getRepository().countTradedDays();
     }

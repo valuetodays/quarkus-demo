@@ -3,6 +3,7 @@ package cn.valuetodays.api2.module.fortune.controller;
 import java.util.List;
 
 import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.reqresp.CheckHedgedKitsResp;
 import cn.valuetodays.api2.module.fortune.service.StockTradeServiceImpl;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
 import cn.valuetodays.quarkus.commons.base.BaseCrudController;
@@ -43,5 +44,11 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
     @POST
     public List<NameValueVo> findCodes() {
         return getService().findCodes();
+    }
+
+    @Path(value = "/checkHedgedData.do")
+    @POST
+    public CheckHedgedKitsResp checkHedgedData(String code) {
+        return getService().checkHedged(code);
     }
 }

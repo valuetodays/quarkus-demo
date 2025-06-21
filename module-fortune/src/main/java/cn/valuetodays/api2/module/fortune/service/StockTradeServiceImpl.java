@@ -18,6 +18,8 @@ import cn.valuetodays.api2.module.fortune.dao.StockTradeDAO;
 import cn.valuetodays.api2.module.fortune.persist.StockPO;
 import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
 import cn.valuetodays.api2.module.fortune.reqresp.AnalyzeHedgeEarnedChartReq;
+import cn.valuetodays.api2.module.fortune.reqresp.CheckHedgedKitsResp;
+import cn.valuetodays.api2.module.fortune.service.kits.CheckHedgedKits;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import cn.vt.moduled.fortune.StockConstants;
@@ -103,7 +105,6 @@ public class StockTradeServiceImpl
         return resp;
     }
 */
-    /*
     public CheckHedgedKitsResp checkHedged(String code) {
         if (StringUtils.isBlank(code)) {
             return new CheckHedgedKitsResp();
@@ -112,7 +113,7 @@ public class StockTradeServiceImpl
         CheckHedgedKits kits = new CheckHedgedKits();
         return kits.doCheck(list);
     }
-*/
+
     /*
     public SaveTradeMonitorByTradeResp saveTradeMonitorByTrade(SimpleTypesReq req) {
         List<Long> tradeIds = parseTextAsTradeIds(req);

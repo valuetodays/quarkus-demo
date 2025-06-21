@@ -1,8 +1,8 @@
 package cn.vt.rest.third.eastmoney.vo;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * .

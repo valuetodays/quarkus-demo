@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import cn.valuetodays.quarkus.commons.base.jpa.JpaCrudLongIdBasePersist;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -17,7 +16,6 @@ import lombok.EqualsAndHashCode;
  * @author lei.liu
  * @since 2025-05-17 23:53
  */
-@Cacheable
 @Table(name = "fortune_industry_daily_stat")
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true /*, value = {"hibernateLazyInitializer", "handler"}*/)

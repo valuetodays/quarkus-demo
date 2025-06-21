@@ -10,4 +10,6 @@ public interface NotifyService {
     void notifyStockMinutePrice();
 
     void notifyNoCookie(String domain);
+
+    void notifyAShareDailyTurnAmount(int yyyyMMdd, String content);
 }

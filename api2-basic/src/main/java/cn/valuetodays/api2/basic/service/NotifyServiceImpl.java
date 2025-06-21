@@ -81,6 +81,7 @@ public class NotifyServiceImpl implements NotifyService {
         this.notify(title, content, group);
     }
 
+    @Override
     public void notifyAShareDailyTurnAmount(int yyyyMMdd, String content) {
         this.notify(
             "【资本市场】A股今日" + yyyyMMdd + "成交额",

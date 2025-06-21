@@ -28,6 +28,10 @@ import org.jsoup.select.Elements;
 @ApplicationScoped
 @Slf4j
 public class SinaStockDividendModule {
+    /**
+     * @param code 601328
+     * @return
+     */
     public List<StockDividendPO> visitHtmlPageAndParse(final String code) {
         final String urlTpl = "https://vip.stock.finance.sina.com.cn/corp/go.php/vISSUE_ShareBonus/stockid/{{CODE}}.phtml";
         final String url = StringUtils.replace(urlTpl, "{{CODE}}", code);

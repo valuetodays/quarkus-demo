@@ -460,7 +460,11 @@ public class StockTradeServiceImpl
             text,
             StockConstants.excludedCodes, StockConstants.excludedTypeCns
         );
-        listToSave.forEach(e -> e.setAccountId(currentAccountId));
+        listToSave.forEach(e -> {
+            e.setAccountId(currentAccountId);
+            e.setCreateUserId(e.getAccountId());
+            e.setUpdateUserId(e.getAccountId());
+        });
         List<StockTradePO> saved = this.save(listToSave);
         return AffectedRowsResp.of(saved.size());
     }

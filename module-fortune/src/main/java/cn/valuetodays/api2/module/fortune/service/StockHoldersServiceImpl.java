@@ -59,6 +59,8 @@ public class StockHoldersServiceImpl
             mshp.setCostPrice(e.getCostPrice());
             mshp.setMarketPrice(e.getMarketPrice());
             mshp.setAccountId(currentAccountId);
+            mshp.setCreateUserId(currentAccountId);
+            mshp.setUpdateUserId(currentAccountId);
             return mshp;
         }).toList();
         return toSaveIfNecessary(listToSave);

@@ -28,6 +28,7 @@ import cn.vt.rest.third.xueqiu.vo.XueQiuKlineResp;
 import cn.vt.util.DateUtils;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -116,6 +117,7 @@ public class StockHistoryPriceServiceImpl
         return list;
     }
 
+    @Transactional
     public boolean refresh(String cookie) {
         List<StockSubjectPO> stockSubjects = stockSubjectService.findAllByType(StockSubjectEnums.Type.DAILY_PRICE);
         List<String> codes = stockSubjects.stream().map(StockSubjectPO::getCode).distinct().toList();

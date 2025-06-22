@@ -14,6 +14,7 @@ import cn.vt.rest.third.eastmoney.vo.IopvResp;
 import cn.vt.util.DateUtils;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.exception.ConstraintViolationException;
@@ -31,6 +32,7 @@ public class EtfIopvService
     @Inject
     StockSubjectServiceImpl stockSubjectService;
 
+    @Transactional
     public void gatherAndSave(boolean fully) {
         List<StockSubjectPO> list = stockSubjectService.findAllByType(StockSubjectEnums.Type.IOPV);
         List<String> codes = list.stream()
@@ -41,6 +43,7 @@ public class EtfIopvService
         }
     }
 
+    @Transactional
     public void gatherAndSaveOne(String code, boolean fully) {
         int currentPage = 1;
         while (true) {

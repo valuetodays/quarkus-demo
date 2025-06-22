@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import cn.valuetodays.api2.basic.enums.NotifyEnums;
 import cn.valuetodays.api2.basic.vo.BarkDict;
 import cn.valuetodays.api2.basic.vo.PushVocechatTextReq;
+import cn.valuetodays.api2.web.basic.push.enums.NotifyEnums;
 import cn.valuetodays.api2.web.common.NotifyService;
 import cn.vt.util.HttpClient4Utils;
 import io.quarkus.redis.datasource.RedisDataSource;
@@ -143,6 +143,7 @@ public class NotifyServiceImpl implements NotifyService {
         );
     }
 
+    @Override
     public void notifyWrongHedgedData(String msg) {
         NotifyEnums.Group group = NotifyEnums.Group.CAPITAL;
         this.notify(

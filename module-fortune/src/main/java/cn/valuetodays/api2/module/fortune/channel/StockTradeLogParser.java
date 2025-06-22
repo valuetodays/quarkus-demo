@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import cn.vt.text.FieldAndTile;
 import cn.vt.text.TitleAndBodyTextParser;

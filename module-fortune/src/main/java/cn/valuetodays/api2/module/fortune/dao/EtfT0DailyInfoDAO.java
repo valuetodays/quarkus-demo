@@ -3,7 +3,7 @@ package cn.valuetodays.api2.module.fortune.dao;
 import java.math.BigDecimal;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.EtfT0DailyInfoPersist;
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0DailyInfoPersist;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;

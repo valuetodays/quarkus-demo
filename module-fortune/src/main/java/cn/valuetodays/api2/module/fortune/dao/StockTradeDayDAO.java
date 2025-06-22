@@ -1,7 +1,7 @@
 package cn.valuetodays.api2.module.fortune.dao;
 
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradeDayPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradeDayPO;
 import cn.vt.rest.third.StockEnums;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;

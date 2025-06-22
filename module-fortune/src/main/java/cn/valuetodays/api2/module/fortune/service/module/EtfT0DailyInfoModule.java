@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0DailyInfoPersist;
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0PO;
 import cn.valuetodays.api2.module.fortune.dao.EtfT0DailyInfoDAO;
-import cn.valuetodays.api2.module.fortune.persist.EtfT0DailyInfoPersist;
-import cn.valuetodays.api2.module.fortune.persist.EtfT0PO;
 import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import cn.vt.rest.third.eastmoney.EastMoneyStockModule;
 import cn.vt.rest.third.eastmoney.vo.EastMoneyStockDetailDataTyped;

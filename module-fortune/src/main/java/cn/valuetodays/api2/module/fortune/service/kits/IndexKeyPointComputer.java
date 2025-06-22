@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
 import org.apache.commons.collections4.CollectionUtils;
 
 /**

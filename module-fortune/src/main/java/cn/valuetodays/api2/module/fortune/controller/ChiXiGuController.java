@@ -2,10 +2,10 @@ package cn.valuetodays.api2.module.fortune.controller;
 
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.reqresp.ChiXiGuResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockForGuXiResp;
 import cn.valuetodays.api2.module.fortune.component.ChiXiGuModule;
 import cn.valuetodays.api2.module.fortune.component.Hushen300GuxiModule;
-import cn.valuetodays.api2.module.fortune.component.reqresp.StockForGuXiResp;
-import cn.valuetodays.api2.module.fortune.reqresp.ChiXiGuResp;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;

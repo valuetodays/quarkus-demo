@@ -12,10 +12,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
-import cn.valuetodays.api2.module.fortune.reqresp.DailyOffsetStatResp;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteStatGroupResp;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteStatResp;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.DailyOffsetStatResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteStatGroupResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteStatResp;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;

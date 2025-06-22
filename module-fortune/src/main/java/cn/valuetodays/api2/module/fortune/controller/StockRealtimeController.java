@@ -3,13 +3,13 @@ package cn.valuetodays.api2.module.fortune.controller;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.enums.StockSubjectEnums;
-import cn.valuetodays.api2.module.fortune.persist.StockPO;
-import cn.valuetodays.api2.module.fortune.persist.StockSubjectPO;
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsRealtimeEtfsQuoteReq;
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsRealtimeEtfsQuoteResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StockReaRltimeCompareReq;
-import cn.valuetodays.api2.module.fortune.reqresp.StockRealtimeCompareResp;
+import cn.valuetodays.api2.module.fortune.client.enums.StockSubjectEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.StockPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockSubjectPO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsRealtimeEtfsQuoteReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsRealtimeEtfsQuoteResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockReaRltimeCompareReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockRealtimeCompareResp;
 import cn.valuetodays.api2.module.fortune.service.StockMinutePriceServiceImpl;
 import cn.valuetodays.api2.module.fortune.service.StockServiceImpl;
 import cn.valuetodays.api2.module.fortune.service.StockSubjectServiceImpl;
@@ -71,7 +71,7 @@ public class StockRealtimeController {
         return StockRealtimeCompareComponent.doCompare(req);
     }
 
-    @Path(value = "suggest.do")
+    @Path(value = "/suggest.do")
     @POST
     public RestPageImpl<StockDetailVO> suggest(PageQueryReqIO pageQueryReqIO) {
         List<StockSubjectPO> subjects = stockSubjectService.findAllByType(StockSubjectEnums.Type.IN_OUT_STRATEGY);
@@ -99,7 +99,7 @@ public class StockRealtimeController {
      *
      * @return 返回的数除以100.0即是最终结果
      */
-    @Path(value = "biasPercentage.do")
+    @Path(value = "/biasPercentage.do")
     @POST
     public Integer biasPercentage(String codeWithRegion) {
         return stockMinutePriceService.biasPercentage(codeWithRegion);

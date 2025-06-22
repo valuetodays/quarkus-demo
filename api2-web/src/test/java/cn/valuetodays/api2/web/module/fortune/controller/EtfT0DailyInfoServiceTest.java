@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.persist.EtfT0DailyInfoPersist;
-import cn.valuetodays.api2.module.fortune.reqresp.T0DailyChartReq;
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0DailyInfoPersist;
+import cn.valuetodays.api2.module.fortune.client.reqresp.T0DailyChartReq;
 import cn.valuetodays.api2.module.fortune.service.EtfT0DailyInfoService;
 import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import cn.valuetodays.quarkus.commons.base.Operator;

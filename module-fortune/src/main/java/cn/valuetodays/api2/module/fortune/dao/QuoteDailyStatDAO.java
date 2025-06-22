@@ -2,8 +2,8 @@ package cn.valuetodays.api2.module.fortune.dao;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
-import cn.valuetodays.api2.module.fortune.reqresp.AShareDailyTurnAmount;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AShareDailyTurnAmount;
 import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;

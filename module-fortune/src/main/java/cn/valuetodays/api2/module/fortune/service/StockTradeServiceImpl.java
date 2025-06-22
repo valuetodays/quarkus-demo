@@ -3,28 +3,52 @@ package cn.valuetodays.api2.module.fortune.service;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import cn.valuetodays.api2.module.fortune.channel.StockTradeLogParser;
 import cn.valuetodays.api2.module.fortune.channel.StockTradeLogParserFactory;
+import cn.valuetodays.api2.module.fortune.client.QmtConstants;
+import cn.valuetodays.api2.module.fortune.client.enums.StockTradeMonitorEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.StockPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradeMonitorPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AnalyzeHedgeEarnedChartReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AnalyzeHedgeEarnedChartResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AnalyzeHedgedTradeResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AnalyzeTradeTimeDistributeChartReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AnalyzeTradeTimeDistributeChartResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AutoToHedgeTradeResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.CheckHedgedKitsResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.DealedOrderInfo;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveTradeMonitorByTradeResp;
+import cn.valuetodays.api2.module.fortune.client.util.PriceUtilsEx;
+import cn.valuetodays.api2.module.fortune.client.util.QmtUtils;
 import cn.valuetodays.api2.module.fortune.dao.StockDAO;
 import cn.valuetodays.api2.module.fortune.dao.StockTradeDAO;
-import cn.valuetodays.api2.module.fortune.persist.StockPO;
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
-import cn.valuetodays.api2.module.fortune.reqresp.AnalyzeHedgeEarnedChartReq;
-import cn.valuetodays.api2.module.fortune.reqresp.CheckHedgedKitsResp;
+import cn.valuetodays.api2.module.fortune.dao.StockTradeMonitorDAO;
 import cn.valuetodays.api2.module.fortune.service.kits.CheckHedgedKits;
+import cn.valuetodays.api2.module.fortune.service.kits.StockTradeAutoHedger;
+import cn.valuetodays.api2.module.fortune.service.module.StockTradeEarnCompute2Module;
+import cn.valuetodays.api2.module.fortune.service.module.StockTradeEarnComputeModule;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
+import cn.valuetodays.api2.web.common.NotifyService;
+import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
+import cn.valuetodays.quarkus.commons.base.QuerySearch;
+import cn.vt.exception.AssertUtils;
 import cn.vt.moduled.fortune.StockConstants;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums.TradeType;
+import cn.vt.rest.third.utils.StockCodeUtils;
 import cn.vt.util.DateUtils;
 import cn.vt.util.StringExUtils;
 import cn.vt.vo.NameValueVo;
@@ -35,8 +59,10 @@ import jakarta.transaction.Transactional;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.StopWatch;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
@@ -52,7 +78,31 @@ public class StockTradeServiceImpl
 
     @Inject
     StockDAO stockDAO;
-    /*
+    @Inject
+    NotifyService notifyService;
+    @Inject
+    StockTradeMonitorDAO stockTradeMonitorDAO;
+    @Inject
+    SqlServiceImpl sqlService;
+
+    /**
+     * 此方法不操作数据库
+     *
+     * @param trades trades
+     */
+    public static AutoToHedgeTradeResp autoHedgeOrders(List<StockTradePO> trades) {
+        AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
+        StockTradeAutoHedger autoHedger = new StockTradeAutoHedger();
+        autoHedger.doAutoHedge(trades, resp);
+        return resp;
+    }
+
+    private static Integer minusDays(LocalDate localDate, int days) {
+        // 取 trade_date > today - days 的时间
+        LocalDate preTradeDateLd = localDate.minusDays(days);
+        return DateUtils.formatAsYyyyMMdd(preTradeDateLd);
+    }
+
     public AutoToHedgeTradeResp autoToHedge(int days) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
         if (days <= 0 || days > 180) {
@@ -64,31 +114,12 @@ public class StockTradeServiceImpl
         List<StockTradePO> list = getRepository().findAllByHedgeIdAndTradeDateGreaterThan(0L, preTradeDate);
         StockTradeAutoHedger autoHedger = new StockTradeAutoHedger();
         autoHedger.doAutoHedge(list, resp);
-        getRepository().saveAll(list);
+        getRepository().persist(list);
         resp.setRecords(resp.getRecords());
         resp.setMatchedRecords(resp.getMatchedRecords());
         return resp;
     }
-*/
-    private static Integer minusDays(LocalDate localDate, int days) {
-        // 取 trade_date > today - days 的时间
-        LocalDate preTradeDateLd = localDate.minusDays(days);
-        return DateUtils.formatAsYyyyMMdd(preTradeDateLd);
-    }
 
-    /**
-     * 此方法不操作数据库
-     *
-     * @param trades trades
-     */
- /*   public static AutoToHedgeTradeResp autoHedgeOrders(List<StockTradePO> trades) {
-        AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
-        StockTradeAutoHedger autoHedger = new StockTradeAutoHedger();
-        autoHedger.doAutoHedge(trades, resp);
-        return resp;
-    }
-*/
-/*
     public AutoToHedgeTradeResp tryAutoToHedge(String code, boolean dryRun) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
         if (StringUtils.isBlank(code)) {
@@ -100,11 +131,11 @@ public class StockTradeServiceImpl
         StockTradeAutoHedger autoHedger = new StockTradeAutoHedger();
         autoHedger.doAutoHedge(list, resp);
         if (!dryRun) {
-            getRepository().saveAll(list);
+            getRepository().persist(list);
         }
         return resp;
     }
-*/
+
     public CheckHedgedKitsResp checkHedged(String code) {
         if (StringUtils.isBlank(code)) {
             return new CheckHedgedKitsResp();
@@ -114,7 +145,7 @@ public class StockTradeServiceImpl
         return kits.doCheck(list);
     }
 
-    /*
+
     public SaveTradeMonitorByTradeResp saveTradeMonitorByTrade(SimpleTypesReq req) {
         List<Long> tradeIds = parseTextAsTradeIds(req);
 
@@ -123,7 +154,7 @@ public class StockTradeServiceImpl
             resp.setMsg("tradeIds is empty/null");
             return resp;
         }
-        List<StockTradePO> trades = this.list(tradeIds);
+        List<StockTradePO> trades = super.listByIds(tradeIds);
         List<String> resultList = new ArrayList<>();
         for (StockTradePO one : trades) {
             String result = "";
@@ -150,7 +181,7 @@ public class StockTradeServiceImpl
                     // setId()要在 initUserIdAndTime()之后
                     monitorPO.setId(one.getId());
                     try {
-                        stockTradeMonitorDAO.save(monitorPO);
+                        stockTradeMonitorDAO.persist(monitorPO);
                         result = "OK";
                     } catch (Exception e) {
                         result = "error with " + e.getMessage();
@@ -162,7 +193,7 @@ public class StockTradeServiceImpl
         resp.setResultList(resultList);
         return resp;
     }
-*/
+
     private static List<Long> parseTextAsTradeIds(SimpleTypesReq req) {
         String tradeIdsStr = StringUtils.trimToEmpty(req.getText());
 
@@ -178,7 +209,7 @@ public class StockTradeServiceImpl
             .toList();
     }
 
-    /*
+
         public AffectedRowsResp saveByOrderInfos(List<DealedOrderInfo> dealedOrderInfos,
                                                  FortuneCommonEnums.Channel channel,
                                                  Long currentAccountId) {
@@ -216,18 +247,18 @@ public class StockTradeServiceImpl
             List<StockTradePO> saved = this.save(listToSave);
             return AffectedRowsResp.of(saved.size());
         }
-    */
-    /*
+
+
     public AnalyzeHedgeEarnedChartResp analyzeHedgeEarnedChart(AnalyzeHedgeEarnedChartReq req) {
-        final Tuple2<String, String> tuple2ForSql = buildSqlStatByDaily(req);
-        final String sqlForTempTable = tuple2ForSql.getT1();
-        final String sqlStatByDaily = tuple2ForSql.getT2();
+        final Pair<String, String> tuple2ForSql = buildSqlStatByDaily(req);
+        final String sqlForTempTable = tuple2ForSql.getLeft();
+        final String sqlStatByDaily = tuple2ForSql.getRight();
         AnalyzeHedgeEarnedChartReq.HedgeEarnedType hedgeEarnedType = req.getHedgeEarnedType();
 
-        jdbcTemplate.execute(sqlForTempTable);
-        List<StatDailyDataVo> list = jdbcTemplate.query(
+        sqlService.execute(sqlForTempTable);
+        List<StatDailyDataVo> list = sqlService.queryForList(
             sqlStatByDaily,
-            new BeanPropertyRowMapper<>(StatDailyDataVo.class),
+            StatDailyDataVo.class,
             req.getAccountId()
         );
 
@@ -272,7 +303,7 @@ public class StockTradeServiceImpl
         resp.setEarnedList(valuesForDate);
         return resp;
     }
-*/
+
     private static Pair<String, String> buildSqlStatByDaily(AnalyzeHedgeEarnedChartReq req) {
         /*
         此sql获取一笔交易及其对应的对冲交易（可能是多笔），
@@ -348,24 +379,19 @@ public class StockTradeServiceImpl
         }
         return getRepository().findAllByCode(code);
     }
-/*
     public AnalyzeHedgedTradeResp analyzeHedgedOld() {
         // 数据条数达到多少才能导致本句特别耗时呢
         List<StockTradePO> hedged = this.findHedged();
         return new StockTradeEarnComputeModule().doComputeEarn(hedged, this);
     }
-*/
 
-    /*
-    @Override
     public AnalyzeHedgedTradeResp analyzeHedgedCode(List<QuerySearch> querySearchList, Long currentAccountId) {
         if (CollectionUtils.isEmpty(querySearchList)) {
             return this.analyzeHedged(currentAccountId);
         }
-        List<StockTradePO> hedged = getRepository().listBy(querySearchList);
+        List<StockTradePO> hedged = super.listBy(querySearchList);
         return new StockTradeEarnComputeModule().doComputeEarn(hedged, this);
     }
-*/
 
     public List<StockTradePO> findNotHedge() {
         return getRepository().findAllByHedgeId(0L);
@@ -387,8 +413,8 @@ public class StockTradeServiceImpl
         return getRepository().countTradedDays();
     }
 
-    /*
-    private List<Tuple2<Long, Long>> hedgeByStockTradeMonitor(List<StockTradePO> stockTrades) {
+
+    private List<Pair<Long, Long>> hedgeByStockTradeMonitor(List<StockTradePO> stockTrades) {
         List<StockTradeMonitorPO> monitors =
             stockTradeMonitorDAO.findAllByStatusAndTradeSysidNotNull(StockTradeMonitorEnums.Status.CLOSED);
         Map<String, StockTradeMonitorPO> sysidMap = monitors.stream()
@@ -404,12 +430,12 @@ public class StockTradeServiceImpl
                     return null;
                 }
 
-                return Tuples.of(e.getId(), monitor.getTradeId());
+                return Pair.of(e.getId(), monitor.getTradeId());
             })
             .filter(Objects::nonNull)
             .toList();
     }
-*/
+
 
     public int countTradedDaysWithWeekends() {
         // 首个交易日，见mysql数据
@@ -443,7 +469,7 @@ public class StockTradeServiceImpl
         return getRepository().findByAccountIdAndIdIn(accountId, ids);
     }
 
-    /*
+
     public void checkHedgedList() {
         List<String> codes = getRepository().findDistinctCodes();
         for (String code : codes) {
@@ -455,10 +481,10 @@ public class StockTradeServiceImpl
                 notifyService.notifyWrongHedgedData(msg);
             }
         }
-    }*/
+    }
 
-    /*
-        public AnalyzeTradeTimeDistributeChartResp analyzeTradeTimeDistributeChart(AnalyzeTradeTimeDistributeChartReq req) {
+
+    public AnalyzeTradeTimeDistributeChartResp analyzeTradeTimeDistributeChart(AnalyzeTradeTimeDistributeChartReq req) {
             String sqlWithVar = """
                 SELECT count(id) as c, trade_time as time
                 FROM `eblog`.`fortune_stock_trade`
@@ -473,8 +499,8 @@ public class StockTradeServiceImpl
             }
             sqlWithVar = StringUtils.replace(sqlWithVar, "{{_CHANNEL_CONDITION_}}", replacement);
 
-            List<AnalyzeTradeTimeDistributeChartResp.CountByTime> list = jdbcTemplate.query(sqlWithVar,
-                new BeanPropertyRowMapper<>(AnalyzeTradeTimeDistributeChartResp.CountByTime.class),
+        List<AnalyzeTradeTimeDistributeChartResp.CountByTime> list = sqlService.queryForList(sqlWithVar,
+            AnalyzeTradeTimeDistributeChartResp.CountByTime.class,
                 req.getAccountId(), req.getCode());
             Map<String, Integer> map = list.stream()
                 .collect(Collectors.toMap(
@@ -498,8 +524,8 @@ public class StockTradeServiceImpl
             resp.setList(finalList);
             return resp;
         }
-    */
-    /*
+
+
     public AutoToHedgeTradeResp autoHedgePairTrade(Map<String, String> pairsUniqueId, int days) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
 
@@ -507,12 +533,12 @@ public class StockTradeServiceImpl
         final List<StockTradePO> list = getRepository().findAllByHedgeIdAndTradeDateGreaterThan(0L, preTradeDate);
 
         int directHedges = 0;
-        List<Tuple2<Long, Long>> idMapForHedge = hedgeByStockTradeMonitor(list);
+        List<Pair<Long, Long>> idMapForHedge = hedgeByStockTradeMonitor(list);
         if (CollectionUtils.isNotEmpty(idMapForHedge)) {
-            Map<Long, StockTradePO> idMap = list.stream().collect(Collectors.toMap(JpaLongIdSimpleEntity::getId, e -> e));
-            for (Tuple2<Long, Long> tuple2 : idMapForHedge) {
-                Long t1 = tuple2.getT1();
-                Long t2 = tuple2.getT2();
+            Map<Long, StockTradePO> idMap = list.stream().collect(Collectors.toMap(StockTradePO::getId, e -> e));
+            for (Pair<Long, Long> tuple2 : idMapForHedge) {
+                Long t1 = tuple2.getLeft();
+                Long t2 = tuple2.getRight();
                 StockTradePO stockTradeT1 = idMap.get(t1);
                 StockTradePO stockTradeT2 = idMap.get(t2);
                 markAsHedgeEachOtherIfNeed(stockTradeT1, stockTradeT2);
@@ -541,7 +567,7 @@ public class StockTradeServiceImpl
         resp.setMatchedRecords(directHedges + pairHedges);
         return resp;
     }
-*/
+
     private int saveListIfNeed(List<StockTradePO> list) {
         if (CollectionUtils.isNotEmpty(list)) {
             getRepository().persist(list);
@@ -570,8 +596,8 @@ public class StockTradeServiceImpl
         s2.setHedgeId(s1.getId());
     }
 
-    /*
-        public AnalyzeHedgedTradeResp analyzeHedged(Long currentAccountId) {
+
+    public AnalyzeHedgedTradeResp analyzeHedged(Long currentAccountId) {
             Integer beginYyyyMMdd = DateUtils.formatAsYyyyMMdd(LocalDate.now().minusMonths(3));
             // 数据条数达到多少才能导致本句特别耗时呢
             String sql = """
@@ -597,16 +623,17 @@ public class StockTradeServiceImpl
                 """;
             // 从当前header中获取userId
             StopWatch stopWatch = new StopWatch();
-            stopWatch.start("query");
-            List<TmpVo> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(TmpVo.class), 1L, beginYyyyMMdd);
+        stopWatch.start();
+
+        List<TmpVo> list = sqlService.queryForList(sql, TmpVo.class, currentAccountId, beginYyyyMMdd);
             stopWatch.stop();
-            stopWatch.start("computeEarn");
+        stopWatch.start();
             AnalyzeHedgedTradeResp resp = new StockTradeEarnCompute2Module().doComputeEarn(list);
             stopWatch.stop();
-            log.info("stopWatch={}", stopWatch.prettyPrint(TimeUnit.MILLISECONDS));
+        log.info("stopWatch={}", stopWatch.toSplitString());
             return resp;
         }
-    */
+
     @Data
     public static class TmpVo implements Serializable {
         private Long id;

@@ -1,8 +1,8 @@
 package cn.valuetodays.api2.basic.controller;
 
-import cn.valuetodays.api2.basic.enums.NotifyEnums;
 import cn.valuetodays.api2.basic.service.NotifyServiceImpl;
 import cn.valuetodays.api2.basic.vo.NotifyCdciReq;
+import cn.valuetodays.api2.web.basic.push.enums.NotifyEnums;
 import cn.vt.R;
 import cn.vt.web.req.SimpleTypesReq;
 import jakarta.enterprise.context.RequestScoped;

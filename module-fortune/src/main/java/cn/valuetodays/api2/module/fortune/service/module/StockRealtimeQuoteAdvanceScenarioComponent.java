@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsCompareResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsCompareResp;
 import cn.vt.rest.third.utils.StockTradeFeeUtils;
 import cn.vt.rest.third.utils.StockUtils;
 import cn.vt.rest.third.utils.TradeFeeConfConstants;

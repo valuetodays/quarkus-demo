@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
 import cn.valuetodays.api2.module.fortune.service.QuoteDailyStatServiceImpl;
 import cn.valuetodays.api2.module.fortune.service.kits.IndexKeyPointComputer;
 import cn.vt.rest.third.eastmoney.vo.EastMoneyStockKlineData;

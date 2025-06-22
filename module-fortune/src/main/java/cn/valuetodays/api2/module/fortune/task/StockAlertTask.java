@@ -1,6 +1,6 @@
 package cn.valuetodays.api2.module.fortune.task;
 
-import cn.valuetodays.api2.module.fortune.enums.StockAlertEnums;
+import cn.valuetodays.api2.module.fortune.client.enums.StockAlertEnums;
 import cn.valuetodays.api2.module.fortune.service.StockAlertService;
 import cn.valuetodays.api2.module.fortune.util.StockUtils;
 import cn.valuetodays.api2.web.common.IVtNatsClient;

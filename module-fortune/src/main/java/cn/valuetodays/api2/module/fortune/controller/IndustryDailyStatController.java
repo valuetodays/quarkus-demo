@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.persist.IndustryDailyStatPersist;
-import cn.valuetodays.api2.module.fortune.reqresp.IndustryDailyStatDaysReq;
+import cn.valuetodays.api2.module.fortune.client.persist.IndustryDailyStatPersist;
+import cn.valuetodays.api2.module.fortune.client.reqresp.IndustryDailyStatDaysReq;
 import cn.valuetodays.api2.module.fortune.service.IndustryDailyStatService;
 import cn.vt.R;
 import jakarta.enterprise.context.RequestScoped;

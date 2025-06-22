@@ -1,0 +1,21 @@
+trade:
+  flags:
+    #    dryRun: true
+    dryRun: false
+    #    true 先买后卖； false 先卖后买
+    buyFirst: true
+  strategyApiUrl: "http://api.valuetodays.cn/feign/investStrategy/realtimeEtfsBatchCompare.do"
+  strategyT0ExchangeApiUrl: "http://api.valuetodays.cn/feign/investStrategy/realtimeEtfsCompare.do"
+  # 每次买/卖的最小金额
+  minMoneyPerTrade: 12000
+  # 每minMoneyPerTrade可赚的最少净利润
+  minNetProfit: 0.3
+  strategyT0:
+    id: 'same-category-exchange'
+    title: '同类品种替换'
+    etfGroups:
+      - { title: '黄金', codes: [ "SH518880", "SZ159934", "SZ159937", "SH518800" ] }
+      - { title: '香港恒生指数', codes: [ "SH513660", "SZ159920" ] }
+      - { title: '纳斯达克100指数', codes: [ "SH513100", "SZ159632", "SH513300", "SZ159941" ] }
+      - { title: '恒生科技指数', codes: [ "SH513010", "SH513130", "SH513180" ] }
+      - { title: '东京日经225指数', codes: [ "SH513000", "SH513520", "SZ159866" ] }

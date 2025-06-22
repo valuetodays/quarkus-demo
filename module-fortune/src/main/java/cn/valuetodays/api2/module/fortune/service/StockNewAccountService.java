@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.StockNewAccountPersist;
 import cn.valuetodays.api2.module.fortune.dao.StockNewAccountRepository;
-import cn.valuetodays.api2.module.fortune.persist.StockNewAccountPersist;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import cn.vt.rest.third.sse.SseNewStockAccountClientUtils;
 import cn.vt.rest.third.sse.vo.StockNewAccountResp;

@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0PO;
 import cn.valuetodays.api2.module.fortune.dao.EtfT0DAO;
-import cn.valuetodays.api2.module.fortune.persist.EtfT0PO;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import cn.vt.rest.third.jisilu.JisiluEtfClientUtils;
 import cn.vt.rest.third.jisilu.vo.EtfResp;

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteConstituentPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuotePO;
 import cn.valuetodays.api2.module.fortune.dao.QuoteConstituentDAO;
 import cn.valuetodays.api2.module.fortune.dao.QuoteDAO;
-import cn.valuetodays.api2.module.fortune.persist.QuoteConstituentPO;
-import cn.valuetodays.api2.module.fortune.persist.QuotePO;
 import cn.valuetodays.api2.module.fortune.service.module.EastMoneyQuoteConstituentModule;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;

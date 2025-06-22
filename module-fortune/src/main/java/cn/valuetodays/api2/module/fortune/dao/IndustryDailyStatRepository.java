@@ -3,7 +3,7 @@ package cn.valuetodays.api2.module.fortune.dao;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.IndustryDailyStatPersist;
+import cn.valuetodays.api2.module.fortune.client.persist.IndustryDailyStatPersist;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;

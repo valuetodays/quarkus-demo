@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.component.reqresp.StockForGuXiReq;
-import cn.valuetodays.api2.module.fortune.persist.QuoteConstituentPO;
-import cn.valuetodays.api2.module.fortune.persist.StockDividendPO;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteLastConstituentsReq;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteLastConstituentsResp;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteConstituentPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockDividendPO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteLastConstituentsReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteLastConstituentsResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockForGuXiReq;
 import cn.valuetodays.api2.module.fortune.service.QuoteServiceImpl;
 import cn.valuetodays.api2.module.fortune.service.StockDividendServiceImpl;
 import cn.vt.rest.third.StockEnums;
@@ -33,7 +33,7 @@ public class Hushen300GuxiModule extends BaseRongZiModule {
 
     @Override
     public List<StockForGuXiReq> determineStockList() {
-        final var req = new QuoteLastConstituentsReq();
+        final QuoteLastConstituentsReq req = new QuoteLastConstituentsReq();
         // 沪深300指数的代码
         req.setQuoteCode("000300");
         final QuoteLastConstituentsResp resp = quoteService.getQuoteConstituentCodes(req);

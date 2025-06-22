@@ -3,7 +3,7 @@ package cn.valuetodays.api2.module.fortune.dao;
 import java.time.LocalDate;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.StockDividendPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockDividendPO;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;

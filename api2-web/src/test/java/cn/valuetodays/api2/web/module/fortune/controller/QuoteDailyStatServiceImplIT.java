@@ -2,14 +2,14 @@ package cn.valuetodays.api2.web.module.fortune.controller;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
-import cn.valuetodays.api2.module.fortune.persist.QuotePO;
-import cn.valuetodays.api2.module.fortune.reqresp.AShareHistoryTurnAmountResp;
-import cn.valuetodays.api2.module.fortune.reqresp.AShareLatestTurnAmountResp;
-import cn.valuetodays.api2.module.fortune.reqresp.DailyOffsetStatReq;
-import cn.valuetodays.api2.module.fortune.reqresp.DailyOffsetStatResp;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteStatGroupResp;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteStatResp;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuotePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AShareHistoryTurnAmountResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AShareLatestTurnAmountResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.DailyOffsetStatReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.DailyOffsetStatResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteStatGroupResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteStatResp;
 import cn.valuetodays.api2.module.fortune.service.QuoteDailyStatServiceImpl;
 import cn.vt.rest.third.eastmoney.QuoteEnums;
 import jakarta.inject.Inject;

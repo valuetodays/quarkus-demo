@@ -2,9 +2,9 @@ package cn.valuetodays.api2.module.fortune.controller;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.BankSecuritiesTradePersist;
-import cn.valuetodays.api2.module.fortune.reqresp.StatEarnedMonthlyResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StatEarnedResp;
+import cn.valuetodays.api2.module.fortune.client.persist.BankSecuritiesTradePersist;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StatEarnedMonthlyResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StatEarnedResp;
 import cn.valuetodays.api2.module.fortune.service.BankSecuritiesTradeServiceImpl;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
 import cn.valuetodays.quarkus.commons.base.BaseCrudController;

@@ -1,6 +1,6 @@
 package cn.valuetodays.api2.module.fortune.controller;
 
-import cn.valuetodays.api2.module.fortune.persist.EtfT0PO;
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0PO;
 import cn.valuetodays.api2.module.fortune.service.EtfT0Service;
 import cn.valuetodays.quarkus.commons.base.BaseCrudController;
 import jakarta.ws.rs.POST;

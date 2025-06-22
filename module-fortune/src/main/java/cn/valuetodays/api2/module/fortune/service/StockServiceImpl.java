@@ -2,8 +2,8 @@ package cn.valuetodays.api2.module.fortune.service;
 
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.persist.StockPO;
 import cn.valuetodays.api2.module.fortune.dao.StockDAO;
-import cn.valuetodays.api2.module.fortune.persist.StockPO;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;

@@ -3,7 +3,7 @@ package cn.valuetodays.api2.module.fortune.component;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.component.reqresp.StockForGuXiReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockForGuXiReq;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
 

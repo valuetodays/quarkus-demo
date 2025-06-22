@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import org.apache.commons.collections4.CollectionUtils;
 

@@ -3,9 +3,9 @@ package cn.valuetodays.api2.module.fortune.service.push;
 import java.math.BigDecimal;
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientResp;
 import cn.valuetodays.api2.module.fortune.controller.StockUtilController;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientReq;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientResp;
 import cn.valuetodays.api2.web.basic.push.vocechat.AutoReplyContent;
 import cn.valuetodays.api2.web.basic.push.vocechat.PushBaseReq;
 import cn.vt.R;

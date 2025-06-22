@@ -77,4 +77,12 @@ public class SqlServiceImpl {
         }
         return new int[0];
     }
+
+    public void execute(String sql) {
+        try (Connection conn = dataSource.getConnection()) {
+            runner.execute(conn, sql);
+        } catch (Exception e) {
+            log.error("error when queryForObject", e);
+        }
+    }
 }

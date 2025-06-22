@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsRealtimeEtfsQuoteResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StockReaRltimeCompareReq;
-import cn.valuetodays.api2.module.fortune.reqresp.StockRealtimeCompareResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsRealtimeEtfsQuoteResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockReaRltimeCompareReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockRealtimeCompareResp;
 import cn.vt.rest.third.xueqiu.StockRealtimeQuoteComponent;
 import cn.vt.rest.third.xueqiu.vo.XueQiuStockRealtimeQuoteData;
 import lombok.extern.slf4j.Slf4j;

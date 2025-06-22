@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.valuetodays.api2.module.fortune.channel.BankSecurityTradeParser;
-import cn.valuetodays.api2.module.fortune.enums.BankSecuritiesTradeEnums;
+import cn.valuetodays.api2.module.fortune.client.enums.BankSecuritiesTradeEnums;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import cn.vt.text.FieldAndTile;
 import org.apache.commons.lang3.StringUtils;

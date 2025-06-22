@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
 import cn.vt.util.DateUtils;
 
 /**

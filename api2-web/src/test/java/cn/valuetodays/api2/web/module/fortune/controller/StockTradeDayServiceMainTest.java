@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradeDayPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradeDayPO;
 import cn.valuetodays.api2.module.fortune.service.StockTradeDayService;
 import cn.vt.util.DateUtils;
 import jakarta.inject.Inject;

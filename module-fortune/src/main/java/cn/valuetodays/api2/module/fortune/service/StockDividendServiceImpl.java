@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import cn.valuetodays.api2.module.fortune.client.persist.StockDividendPO;
 import cn.valuetodays.api2.module.fortune.dao.StockDividendDAO;
-import cn.valuetodays.api2.module.fortune.persist.StockDividendPO;
 import cn.valuetodays.api2.module.fortune.service.module.SinaStockDividendModule;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;

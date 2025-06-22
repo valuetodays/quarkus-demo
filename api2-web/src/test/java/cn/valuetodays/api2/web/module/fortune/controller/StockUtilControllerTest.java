@@ -3,10 +3,10 @@ package cn.valuetodays.api2.web.module.fortune.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientResp.GradientItem;
 import cn.valuetodays.api2.module.fortune.controller.StockUtilController;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientReq;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientResp.GradientItem;
 import cn.vt.R;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;

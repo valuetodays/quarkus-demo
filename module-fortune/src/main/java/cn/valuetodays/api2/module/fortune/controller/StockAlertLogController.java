@@ -1,6 +1,6 @@
 package cn.valuetodays.api2.module.fortune.controller;
 
-import cn.valuetodays.api2.module.fortune.persist.StockAlertLogPersist;
+import cn.valuetodays.api2.module.fortune.client.persist.StockAlertLogPersist;
 import cn.valuetodays.api2.module.fortune.service.StockAlertLogService;
 import cn.valuetodays.quarkus.commons.base.BaseCrudController;
 import jakarta.enterprise.context.RequestScoped;

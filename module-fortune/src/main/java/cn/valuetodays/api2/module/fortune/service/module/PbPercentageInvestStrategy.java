@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
-import cn.valuetodays.api2.module.fortune.persist.QuoteValuePO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteValuePO;
 import cn.valuetodays.api2.module.fortune.service.QuoteDailyStatServiceImpl;
 import cn.valuetodays.api2.module.fortune.service.QuoteValueServiceImpl;
 import cn.valuetodays.quarkus.commons.base.jpa.StatDateAndLongIdEntity;

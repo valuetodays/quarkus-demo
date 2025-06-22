@@ -1,6 +1,6 @@
 package cn.valuetodays.api2.module.fortune.service.module;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteValuePO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteValuePO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

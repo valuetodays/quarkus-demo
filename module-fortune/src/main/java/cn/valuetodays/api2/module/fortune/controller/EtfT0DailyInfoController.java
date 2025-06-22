@@ -3,9 +3,9 @@ package cn.valuetodays.api2.module.fortune.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.EtfT0DailyInfoPersist;
-import cn.valuetodays.api2.module.fortune.reqresp.T0DailyChartReq;
-import cn.valuetodays.api2.module.fortune.reqresp.T0DailyChartResp;
+import cn.valuetodays.api2.module.fortune.client.persist.EtfT0DailyInfoPersist;
+import cn.valuetodays.api2.module.fortune.client.reqresp.T0DailyChartReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.T0DailyChartResp;
 import cn.valuetodays.api2.module.fortune.service.EtfT0DailyInfoService;
 import cn.valuetodays.quarkus.commons.base.BaseCrudController;
 import cn.vt.vo.StringValueLabelVO;

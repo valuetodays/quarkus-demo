@@ -3,7 +3,7 @@ package cn.valuetodays.api2.module.fortune.service.module;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
 import cn.valuetodays.api2.module.fortune.service.QuoteDailyStatServiceImpl;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradeDayPO;
 import cn.valuetodays.api2.module.fortune.dao.StockTradeDayDAO;
-import cn.valuetodays.api2.module.fortune.persist.StockTradeDayPO;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import cn.vt.rest.third.StockEnums;
 import cn.vt.util.DateUtils;

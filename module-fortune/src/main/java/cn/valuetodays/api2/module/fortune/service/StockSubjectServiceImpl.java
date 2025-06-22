@@ -2,9 +2,9 @@ package cn.valuetodays.api2.module.fortune.service;
 
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.enums.StockSubjectEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.StockSubjectPO;
 import cn.valuetodays.api2.module.fortune.dao.StockSubjectDAO;
-import cn.valuetodays.api2.module.fortune.enums.StockSubjectEnums;
-import cn.valuetodays.api2.module.fortune.persist.StockSubjectPO;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;

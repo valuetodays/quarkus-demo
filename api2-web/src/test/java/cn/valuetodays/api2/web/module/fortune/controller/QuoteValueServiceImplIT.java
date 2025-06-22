@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteValuePO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteValuePO;
 import cn.valuetodays.api2.module.fortune.service.QuoteValueServiceImpl;
 import cn.vt.rest.third.danjuan.vo.DjIndexData;
 import cn.vt.rest.third.danjuan.vo.DjPbData;

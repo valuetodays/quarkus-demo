@@ -11,11 +11,11 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import cn.valuetodays.api2.module.fortune.client.enums.QuoteDailyStatEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteDailyStatPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuotePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AShareLatestTurnAmountResp;
 import cn.valuetodays.api2.module.fortune.dao.QuoteDailyStatDAO;
-import cn.valuetodays.api2.module.fortune.enums.QuoteDailyStatEnums;
-import cn.valuetodays.api2.module.fortune.persist.QuoteDailyStatPO;
-import cn.valuetodays.api2.module.fortune.persist.QuotePO;
-import cn.valuetodays.api2.module.fortune.reqresp.AShareLatestTurnAmountResp;
 import cn.valuetodays.api2.module.fortune.service.QuoteDailyStatServiceImpl;
 import cn.vt.rest.third.eastmoney.QuoteEnums;
 import cn.vt.rest.third.eastmoney.vo.EastMoneyRealtimeIndexData;

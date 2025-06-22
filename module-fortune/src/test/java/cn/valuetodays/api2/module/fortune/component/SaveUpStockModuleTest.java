@@ -3,8 +3,8 @@ package cn.valuetodays.api2.module.fortune.component;
 import java.math.BigDecimal;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockReq;
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockResp;
 import cn.vt.test.TestBase;
 import org.junit.jupiter.api.Test;
 

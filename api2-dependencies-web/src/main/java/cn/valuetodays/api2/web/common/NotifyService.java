@@ -12,4 +12,9 @@ public interface NotifyService {
     void notifyNoCookie(String domain);
 
     void notifyAShareDailyTurnAmount(int yyyyMMdd, String content);
+
+    void notifyWrongHedgedData(String msg);
+
+    void notify(String title, String content, String group, boolean withSound);
+
 }

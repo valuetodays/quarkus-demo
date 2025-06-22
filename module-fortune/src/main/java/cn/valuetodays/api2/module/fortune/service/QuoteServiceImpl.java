@@ -2,10 +2,10 @@ package cn.valuetodays.api2.module.fortune.service;
 
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.persist.QuotePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteLastConstituentsReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.QuoteLastConstituentsResp;
 import cn.valuetodays.api2.module.fortune.dao.QuoteDAO;
-import cn.valuetodays.api2.module.fortune.persist.QuotePO;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteLastConstituentsReq;
-import cn.valuetodays.api2.module.fortune.reqresp.QuoteLastConstituentsResp;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

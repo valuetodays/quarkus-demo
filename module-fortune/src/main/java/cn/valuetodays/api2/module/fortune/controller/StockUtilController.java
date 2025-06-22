@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockPriceGradientResp;
 import cn.valuetodays.api2.module.fortune.component.SaveUpStockModule;
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockReq;
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientReq;
-import cn.valuetodays.api2.module.fortune.reqresp.StockPriceGradientResp;
 import cn.vt.R;
 import cn.vt.exception.AssertFailException;
 import cn.vt.rest.third.eastmoney.EastMoneyStockUtils;

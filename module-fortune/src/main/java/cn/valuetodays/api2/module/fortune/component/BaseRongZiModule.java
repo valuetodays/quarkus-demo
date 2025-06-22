@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.component.reqresp.StockForGuXiReq;
-import cn.valuetodays.api2.module.fortune.component.reqresp.StockForGuXiResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsRealtimeEtfsQuoteReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsRealtimeEtfsQuoteResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockForGuXiReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StockForGuXiResp;
 import cn.valuetodays.api2.module.fortune.controller.StockRealtimeController;
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsRealtimeEtfsQuoteReq;
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsRealtimeEtfsQuoteResp;
 import cn.vt.rest.third.utils.NumberUtils;
 import jakarta.inject.Inject;
 

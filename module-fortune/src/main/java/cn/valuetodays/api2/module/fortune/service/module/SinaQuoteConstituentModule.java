@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.persist.QuoteConstituentPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteConstituentPO;
 import cn.vt.util.DateUtils;
 import cn.vt.util.HttpClient4Utils;
 import jakarta.enterprise.context.ApplicationScoped;

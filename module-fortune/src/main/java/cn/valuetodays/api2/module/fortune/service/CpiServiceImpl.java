@@ -1,7 +1,7 @@
 package cn.valuetodays.api2.module.fortune.service;
 
+import cn.valuetodays.api2.module.fortune.client.persist.CpiPO;
 import cn.valuetodays.api2.module.fortune.dao.CpiDAO;
-import cn.valuetodays.api2.module.fortune.persist.CpiPO;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;
 

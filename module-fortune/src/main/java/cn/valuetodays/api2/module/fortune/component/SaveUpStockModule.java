@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockReq;
-import cn.valuetodays.api2.module.fortune.reqresp.SaveUpStockResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockReq;
+import cn.valuetodays.api2.module.fortune.client.reqresp.SaveUpStockResp;
 import cn.vt.exception.AssertUtils;
 import jakarta.enterprise.context.ApplicationScoped;
 

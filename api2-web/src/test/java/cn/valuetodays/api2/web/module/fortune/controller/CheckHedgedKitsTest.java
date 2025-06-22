@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
 import cn.valuetodays.api2.module.fortune.service.kits.CheckHedgedKits;
 import cn.vt.moduled.fortune.enums.FortuneCommonEnums;
 import org.junit.jupiter.api.Test;

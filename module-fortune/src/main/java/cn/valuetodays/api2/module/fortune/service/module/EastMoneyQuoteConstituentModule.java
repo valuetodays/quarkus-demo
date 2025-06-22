@@ -10,10 +10,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import cn.valuetodays.api2.module.fortune.client.persist.QuoteConstituentPO;
+import cn.valuetodays.api2.module.fortune.client.persist.QuotePO;
 import cn.valuetodays.api2.module.fortune.dao.QuoteConstituentDAO;
 import cn.valuetodays.api2.module.fortune.dao.QuoteDAO;
-import cn.valuetodays.api2.module.fortune.persist.QuoteConstituentPO;
-import cn.valuetodays.api2.module.fortune.persist.QuotePO;
 import cn.vt.core.Title;
 import cn.vt.core.TitleCapable;
 import cn.vt.rest.third.eastmoney.vo.EastmoneyBasePageResp;

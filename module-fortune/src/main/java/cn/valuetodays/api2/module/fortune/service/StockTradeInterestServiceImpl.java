@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import cn.valuetodays.api2.module.fortune.channel.huabao.HuabaoTradeInterestParser;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradeInterestPO;
 import cn.valuetodays.api2.module.fortune.dao.StockTradeInterestDAO;
-import cn.valuetodays.api2.module.fortune.persist.StockTradeInterestPO;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
 import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;

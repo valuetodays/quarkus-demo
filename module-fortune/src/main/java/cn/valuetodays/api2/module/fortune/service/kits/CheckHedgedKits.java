@@ -8,8 +8,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
-import cn.valuetodays.api2.module.fortune.reqresp.CheckHedgedKitsResp;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.CheckHedgedKitsResp;
 import cn.valuetodays.quarkus.commons.base.jpa.JpaIdBasePersist;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;

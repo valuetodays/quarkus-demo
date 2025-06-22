@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import cn.valuetodays.api2.module.fortune.client.persist.CpiPO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.CpiResp;
 import cn.valuetodays.api2.module.fortune.dao.CpiDAO;
-import cn.valuetodays.api2.module.fortune.persist.CpiPO;
-import cn.valuetodays.api2.module.fortune.reqresp.CpiResp;
 import cn.vt.util.DateUtils;
 import cn.vt.util.HttpClient4Utils;
 import cn.vt.util.JsonUtils;

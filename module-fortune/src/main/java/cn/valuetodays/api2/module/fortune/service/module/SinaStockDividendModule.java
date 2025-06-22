@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.StockDividendPO;
+import cn.valuetodays.api2.module.fortune.client.persist.StockDividendPO;
 import cn.vt.util.DateUtils;
 import cn.vt.util.HttpClient4Utils;
 import jakarta.enterprise.context.ApplicationScoped;

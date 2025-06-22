@@ -2,8 +2,8 @@ package cn.valuetodays.api2.module.fortune.dao;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.enums.StockAlertEnums;
-import cn.valuetodays.api2.module.fortune.persist.StockAlertPersist;
+import cn.valuetodays.api2.module.fortune.client.enums.StockAlertEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.StockAlertPersist;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -2,8 +2,8 @@ package cn.valuetodays.api2.module.fortune.dao;
 
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.enums.StockSubjectEnums;
-import cn.valuetodays.api2.module.fortune.persist.StockSubjectPO;
+import cn.valuetodays.api2.module.fortune.client.enums.StockSubjectEnums;
+import cn.valuetodays.api2.module.fortune.client.persist.StockSubjectPO;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

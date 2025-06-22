@@ -9,8 +9,8 @@ import java.util.Objects;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import cn.valuetodays.api2.module.fortune.persist.StockTradePO;
-import cn.valuetodays.api2.module.fortune.reqresp.AutoToHedgeTradeResp;
+import cn.valuetodays.api2.module.fortune.client.persist.StockTradePO;
+import cn.valuetodays.api2.module.fortune.client.reqresp.AutoToHedgeTradeResp;
 import cn.valuetodays.quarkus.commons.base.jpa.JpaIdBasePersist;
 import org.apache.commons.collections4.CollectionUtils;
 

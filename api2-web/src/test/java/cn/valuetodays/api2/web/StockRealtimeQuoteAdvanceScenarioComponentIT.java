@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.valuetodays.api2.module.fortune.reqresp.EtfsCompareResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.EtfsCompareResp;
 import cn.valuetodays.api2.module.fortune.service.module.StockRealtimeQuoteAdvanceScenarioComponent;
 import cn.vt.test.TestBase;
 import org.junit.jupiter.api.Test;

@@ -5,10 +5,10 @@ import java.util.Objects;
 
 import cn.valuetodays.api2.module.fortune.channel.BankSecurityTradeParser;
 import cn.valuetodays.api2.module.fortune.channel.BankSecurityTradeParserFactory;
+import cn.valuetodays.api2.module.fortune.client.persist.BankSecuritiesTradePersist;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StatEarnedMonthlyResp;
+import cn.valuetodays.api2.module.fortune.client.reqresp.StatEarnedResp;
 import cn.valuetodays.api2.module.fortune.dao.BankSecuritiesTradeDAO;
-import cn.valuetodays.api2.module.fortune.persist.BankSecuritiesTradePersist;
-import cn.valuetodays.api2.module.fortune.reqresp.StatEarnedMonthlyResp;
-import cn.valuetodays.api2.module.fortune.reqresp.StatEarnedResp;
 import cn.valuetodays.api2.web.common.AffectedRowsResp;
 import cn.valuetodays.api2.web.common.SqlServiceImpl;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;

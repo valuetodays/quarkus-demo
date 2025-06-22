@@ -16,12 +16,17 @@
     <dependencies>
         <dependency>
             <groupId>cn.valuetodays.api2</groupId>
-            <artifactId>api2-dependencies-web</artifactId>
+            <artifactId>module-stock-trade</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.valuetodays.api2</groupId>
-            <artifactId>module-third-rest</artifactId>
+            <artifactId>module-fortune-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.valuetodays.api2</groupId>
+            <artifactId>api2-dependencies-web</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
@@ -30,5 +35,6 @@
             <artifactId>commons-math3</artifactId>
             <version>3.6.1</version>
         </dependency>
+
     </dependencies>
 </project>

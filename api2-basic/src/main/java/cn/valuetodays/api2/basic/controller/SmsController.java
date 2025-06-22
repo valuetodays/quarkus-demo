@@ -20,7 +20,7 @@ public class SmsController {
     @Inject
     SmsServiceImpl smsService;
 
-    @Path("sendSms.do")
+    @Path("sendSms")
     @POST
     public R<SmsResultVO> sendSms(SendSmsIO io) {
         io.makeIgnore();

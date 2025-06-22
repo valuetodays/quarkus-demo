@@ -23,7 +23,7 @@ public class ChiXiGuController {
     @Inject
     Hushen300GuxiModule hushen300GuxiModule;
 
-    @Path("/selfChoice.do")
+    @Path("/selfChoice")
     @POST
     public ChiXiGuResp selfChoice() {
         List<StockForGuXiResp> chiXiGuList = chiXiGuModule.computeDetail();
@@ -34,7 +34,7 @@ public class ChiXiGuController {
         return chiXiGuResp;
     }
 
-    @Path("/hushen300.do")
+    @Path("/hushen300")
     @POST
     public ChiXiGuResp hushen300() {
         List<StockForGuXiResp> chiXiGuList = hushen300GuxiModule.computeDetail();

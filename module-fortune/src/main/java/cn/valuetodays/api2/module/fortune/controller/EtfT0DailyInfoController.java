@@ -24,14 +24,14 @@ import org.apache.commons.lang3.StringUtils;
 @Path("/etfT0DailyInfo")
 public class EtfT0DailyInfoController
     extends BaseCrudController<Long, EtfT0DailyInfoPersist, EtfT0DailyInfoService> {
-    @Path(value = "/refresh.do")
+    @Path(value = "/refresh")
     @POST
 //    @Async
     public void refresh() {
         getService().refresh();
     }
 
-    @Path(value = "/fixTotalSharesInShBySql.do")
+    @Path(value = "/fixTotalSharesInShBySql")
     @POST
 //    @Async
     public void fixTotalSharesInShBySql(SimpleTypesReq req) {
@@ -39,14 +39,14 @@ public class EtfT0DailyInfoController
         getService().fixTotalSharesInShBySql(ObjectUtils.defaultIfNull(lastId, 0L));
     }
 
-    @Path(value = "/fixTotalShares.do")
+    @Path(value = "/fixTotalShares")
     @POST
 //    @Async
     public void fixTotalShares() {
         getService().fixTotalShares();
     }
 
-    @Path(value = "/fixTotalSharesByCode.do")
+    @Path(value = "/fixTotalSharesByCode")
     @POST
     public String fixTotalSharesByCode(String code) {
         if (StringUtils.isBlank(code)) {
@@ -57,7 +57,7 @@ public class EtfT0DailyInfoController
     }
 
 
-    @Path(value = "/getMetricList.do")
+    @Path(value = "/getMetricList")
     @POST
     public List<StringValueLabelVO> getMetricList() {
         return Arrays.stream(T0DailyChartReq.MetricType.values())
@@ -65,7 +65,7 @@ public class EtfT0DailyInfoController
             .toList();
     }
 
-    @Path(value = "/dailyChart.do")
+    @Path(value = "/dailyChart")
     @POST
     public List<T0DailyChartResp> dailyChart(T0DailyChartReq req) {
         return getService().dailyChart(req);

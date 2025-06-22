@@ -26,7 +26,7 @@ public class EncryptController {
     @Inject
     RedisDataSource connection;
 
-    @Path("/anon/getPublicKey.do")
+    @Path("/anon/getPublicKey")
     @POST
     public R<String> getPublicKey() {
         final HashCommands<String, String, String> hashCommands = connection.hash(String.class);

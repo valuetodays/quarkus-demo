@@ -142,7 +142,7 @@ public class QmtController extends BaseAuthorizationController {
         return stockTradeOrderVo;
     }
 
-    @Path(value = "/tryTrade.do")
+    @Path(value = "/tryTrade")
     @POST
     public TradeByMonitorIdResp tryTrade(@Valid TradeByMonitorIdReq req) {
         final Long monitorId = req.getMonitorId();
@@ -190,7 +190,7 @@ public class QmtController extends BaseAuthorizationController {
     /**
      * 通过qmt获取持仓并保存
      */
-    @Path("/saveHolders.do")
+    @Path("/saveHolders")
     @POST
     public AffectedRowsResp saveHolders() {
         List<HolderInfo> holderInfos = haitongHttpAutoTrade.parseHolderInfo(null);
@@ -225,7 +225,7 @@ public class QmtController extends BaseAuthorizationController {
     /**
      * 通过qmt获取成交并保存
      */
-    @Path("/saveStockTradeLog.do")
+    @Path("/saveStockTradeLog")
     @POST
     public AffectedRowsResp saveStockTradeLog() {
         Map<String, String> req = Map.of(
@@ -270,7 +270,7 @@ public class QmtController extends BaseAuthorizationController {
      * 获取委托
      */
 //    @Path({"/feign/getOrders.do", "/feign/getSuccessOrders.do"})
-    @Path("/feign/getSuccessOrders.do")
+    @Path("/feign/getSuccessOrders")
     @POST
     public List<OrderVo> getSuccessOrders() {
         return this.getOrders(List.of(QmtConstants.ORDER_SUCCEEDED), "0");
@@ -287,7 +287,7 @@ public class QmtController extends BaseAuthorizationController {
     /**
      * 分析委托
      */
-    @Path("/feign/analysisOrders.do")
+    @Path("/feign/analysisOrders")
     @POST
     public QmtAnalysisOrdersResp analysisOrders() {
         try {
@@ -472,7 +472,7 @@ public class QmtController extends BaseAuthorizationController {
         }
     }
 
-    @Path(value = "/updateStockTradeMonitorByQmtOrderWithFixAndSuc.do")
+    @Path(value = "/updateStockTradeMonitorByQmtOrderWithFixAndSuc")
     @POST
     public UpdateStockTradeMonitorByQmtOrderWithFixAndSucResp updateStockTradeMonitorByQmtOrderWithFixAndSuc(
         SimpleTypesReq req

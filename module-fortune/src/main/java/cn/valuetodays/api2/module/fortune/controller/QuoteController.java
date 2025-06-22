@@ -49,13 +49,13 @@ public class QuoteController {
         return quoteService.list();
     }
 
-    @Path(value = "/aShareLatestTurnAmount.do")
+    @Path(value = "/aShareLatestTurnAmount")
     @POST
     public AShareLatestTurnAmountResp aShareLatestTurnAmount() {
         return quoteDailyStatService.aShareLatestTurnAmount();
     }
 
-    @Path(value = "/aShareLatestTurnAmountChart.do")
+    @Path(value = "/aShareLatestTurnAmountChart")
     @POST
     public AShareLatestTurnAmountChartResp aShareLatestTurnAmountChart() {
         AShareHistoryTurnAmountResp resp = quoteDailyStatService.aShareHistoryTurnAmount();
@@ -80,7 +80,7 @@ public class QuoteController {
         return chartResp;
     }
 
-    @Path("/aShareHistoryTurnAmount.do")
+    @Path("/aShareHistoryTurnAmount")
     @POST
     public AShareHistoryTurnAmountResp aShareHistoryTurnAmount() {
         return quoteDailyStatService.aShareHistoryTurnAmount();
@@ -89,7 +89,7 @@ public class QuoteController {
     /**
      * 用法   /feign/refreshOne.do?code=xxx
      */
-    @Path("/refreshOne.do")
+    @Path("/refreshOne")
     @POST
     public int refreshOne(@QueryParam("code") String code, @QueryParam("fully") @DefaultValue("true") Boolean fully) {
         return quoteDailyStatService.refreshOne(code, fully);
@@ -98,43 +98,43 @@ public class QuoteController {
     /**
      * 用法   /feign/refreshAll.do
      */
-    @Path("/refreshAll.do")
+    @Path("/refreshAll")
     @POST
     public boolean refreshAll() {
         return quoteDailyStatService.refreshAll();
     }
 
-    @Path("/listByCode.do")
+    @Path("/listByCode")
     @POST
     public List<QuoteDailyStatPO> listByCode(String code) {
         return quoteDailyStatService.findAllByCodeOrderByMinTimeDesc(code);
     }
 
-    @Path("/computeKeyPointsByCode.do")
+    @Path("/computeKeyPointsByCode")
     @POST
     public List<QuoteDailyStatPO> computeKeyPointsByCode(String code) {
         return quoteDailyStatService.computeKeyPointsByCode(code);
     }
 
-    @Path("/quoteStats.do")
+    @Path("/quoteStats")
     @POST
     public QuoteStatGroupResp quoteStats(String code) {
         return quoteDailyStatService.computeStats(code);
     }
 
-    @Path("/quoteStatsAllCodes.do")
+    @Path("/quoteStatsAllCodes")
     @POST
     public List<CodedQuoteStatVo> quoteStatsAllCodes() {
         return quoteDailyStatService.computeStatsForAllCodes();
     }
 
-    @Path("/dailyOffsetStat.do")
+    @Path("/dailyOffsetStat")
     @POST
     public DailyOffsetStatResp dailyOffsetStat(DailyOffsetStatReq req) {
         return quoteDailyStatService.computeDailyOffsetStat(req);
     }
 
-    @Path("/getQuoteLastConstituents.do")
+    @Path("/getQuoteLastConstituents")
     @POST
     public QuoteLastConstituentsResp getQuoteConstituentCodes(QuoteLastConstituentsReq req) {
         return quoteService.getQuoteConstituentCodes(req);

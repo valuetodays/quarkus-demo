@@ -40,7 +40,7 @@ public class StockRealtimeController {
     @Inject
     private StockSubjectServiceImpl stockSubjectService;
 
-    @Path("/realtimeEtfsQuote.do")
+    @Path("/realtimeEtfsQuote")
     @POST
     public List<EtfsRealtimeEtfsQuoteResp> realtimeEtfsQuote(EtfsRealtimeEtfsQuoteReq req) {
         List<XueQiuStockRealtimeQuoteData> list = StockRealtimeQuoteComponent.doGet(req.getCodes());
@@ -57,7 +57,7 @@ public class StockRealtimeController {
     }
 
 
-    @Path("/stockRealtimeCompare.do")
+    @Path("/stockRealtimeCompare")
     @POST
     public StockRealtimeCompareResp stockRealtimeCompare(StockReaRltimeCompareReq req) {
         // 选定交易对象后，我会关注两者之间涨幅差，
@@ -71,7 +71,7 @@ public class StockRealtimeController {
         return StockRealtimeCompareComponent.doCompare(req);
     }
 
-    @Path(value = "/suggest.do")
+    @Path(value = "/suggest")
     @POST
     public RestPageImpl<StockDetailVO> suggest(PageQueryReqIO pageQueryReqIO) {
         List<StockSubjectPO> subjects = stockSubjectService.findAllByType(StockSubjectEnums.Type.IN_OUT_STRATEGY);
@@ -99,7 +99,7 @@ public class StockRealtimeController {
      *
      * @return 返回的数除以100.0即是最终结果
      */
-    @Path(value = "/biasPercentage.do")
+    @Path(value = "/biasPercentage")
     @POST
     public Integer biasPercentage(String codeWithRegion) {
         return stockMinutePriceService.biasPercentage(codeWithRegion);

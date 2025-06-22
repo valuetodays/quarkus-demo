@@ -32,7 +32,7 @@ public class CookieController {
     @Inject
     CookieCacheComponent cookieCacheComponent;
 
-    @Path("/anon/raw/push.do")
+    @Path("/anon/raw/push")
     @POST
     public Map<String, Object> pushCookies(PushCookieReq req) {
         log.info("pushCookies: {}", req);
@@ -51,20 +51,20 @@ public class CookieController {
         }
     }
 
-    @Path("/anon/pullWeiboCookies.do")
+    @Path("/anon/pullWeiboCookies")
     @POST
     public Map<String, String> pullWeiboCookies() {
         List<String> excludeNames = List.of("XSRF-TOKEN");
         return cookieCacheComponent.pull(PushCookieReq.DOMAIN_WEIBO, excludeNames);
     }
 
-    @Path("/anon/pullXueqiuCookies.do")
+    @Path("/anon/pullXueqiuCookies")
     @POST
     public Map<String, String> pullXueqiuCookies() {
         return cookieCacheComponent.pullXueqiuCookie();
     }
 
-    @Path("/anon/pull.do")
+    @Path("/anon/pull")
     @POST
     public Map<String, String> pullCookie(PullCookieReq req) {
         String domain = req.getDomain();

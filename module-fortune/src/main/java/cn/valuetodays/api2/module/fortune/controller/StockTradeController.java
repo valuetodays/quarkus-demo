@@ -42,25 +42,25 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
     }
 
 
-    @Path(value = "/findTrades.do")
+    @Path(value = "/findTrades")
     @POST
     public List<StockTradePO> findTrades(String code) {
         return getService().findTrades(code);
     }
 
-    @Path(value = "/findNotHedge.do")
+    @Path(value = "/findNotHedge")
     @POST
     public List<StockTradePO> findNotHedge() {
         return getService().findNotHedge();
     }
 
-    @Path(value = "/findCodes.do")
+    @Path(value = "/findCodes")
     @POST
     public List<NameValueVo> findCodes() {
         return getService().findCodes();
     }
 
-    @Path(value = "/checkHedgedData.do")
+    @Path(value = "/checkHedgedData")
     @POST
     public CheckHedgedKitsResp checkHedgedData(String code) {
         return getService().checkHedged(code);
@@ -69,7 +69,7 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
     /**
      * 自动对冲交易
      */
-    @Path(value = "/autoToHedge.do")
+    @Path(value = "/autoToHedge")
     @POST
     public AutoToHedgeTradeResp autoToHedge(SimpleTypesReq req) {
         Integer days = req.getI();
@@ -82,26 +82,26 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
     }
 
 
-    @Path(value = "/autoHedgeOrders.do")
+    @Path(value = "/autoHedgeOrders")
     @POST
     public AutoToHedgeTradeResp autoHedgeOrders(List<StockTradePO> trades) {
         return StockTradeServiceImpl.autoHedgeOrders(trades);
     }
 
-    @Path(value = "/tryAutoToHedge.do")
+    @Path(value = "/tryAutoToHedge")
     @POST
     public AutoToHedgeTradeResp tryAutoToHedge(TryAutoToHedgeReq req) {
         return getService().tryAutoToHedge(req.getCode(), req.isDryRun());
     }
 
     //    @Async
-    @Path(value = "/checkHedgedList.do")
+    @Path(value = "/checkHedgedList")
     @POST
     public void checkHedgedList() {
         getService().checkHedgedList();
     }
 
-    @Path(value = "/saveTradeMonitorByTrade.do")
+    @Path(value = "/saveTradeMonitorByTrade")
     @POST
     public SaveTradeMonitorByTradeResp saveTradeMonitorByTrade(
         SimpleTypesReq req
@@ -109,7 +109,7 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
         return getService().saveTradeMonitorByTrade(req);
     }
 
-    @Path(value = "/analyzeHedged.do")
+    @Path(value = "/analyzeHedged")
     @POST
     public AnalyzeHedgedTradeResp analyzeHedged() {
         AnalyzeHedgedTradeResp resp = getService().analyzeHedged(getCurrentAccountId());
@@ -118,7 +118,7 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
         return resp;
     }
 
-    @Path(value = "/analyzeHedgedCode.do")
+    @Path(value = "/analyzeHedgedCode")
     @POST
     public AnalyzeHedgedTradeResp analyzeHedgedCode(List<QuerySearch> searchList) {
         AnalyzeHedgedTradeResp resp = getService().analyzeHedgedCode(searchList, getCurrentAccountId());
@@ -127,7 +127,7 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
         return resp;
     }
 
-    @Path("/analyzeHedgedWithFee.do")
+    @Path("/analyzeHedgedWithFee")
     @POST
     public AnalyzeHedgedWithFeeResp analyzeHedgedWithFee() {
         AnalyzeHedgedTradeResp analyzeHedgedTrade = this.analyzeHedged();
@@ -157,13 +157,13 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
         return resp;
     }
 
-    @Path("/analyzeHedgeEarnedChart.do")
+    @Path("/analyzeHedgeEarnedChart")
     @POST
     public AnalyzeHedgeEarnedChartResp analyzeHedgeEarnedChart(AnalyzeHedgeEarnedChartReq req) {
         return getService().analyzeHedgeEarnedChart(req);
     }
 
-    @Path("/getStockTradeInfos.do")
+    @Path("/getStockTradeInfos")
     @POST
     public GetStockTradeInfosResp getStockTradeInfos(GetStockTradeInfosReq req) {
         List<StockTradePO> stockTrades = getService().findByAccountIdAndIdIn(req.getAccountId(), req.toIdList());
@@ -178,7 +178,7 @@ public class StockTradeController extends BaseCrudController<Long, StockTradePO,
         return resp;
     }
 
-    @Path("/analyzeTradeTimeDistributeChart.do")
+    @Path("/analyzeTradeTimeDistributeChart")
     @POST
     public AnalyzeTradeTimeDistributeChartResp analyzeTradeTimeDistributeChart(
         AnalyzeTradeTimeDistributeChartReq req

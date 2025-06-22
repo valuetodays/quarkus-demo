@@ -38,7 +38,7 @@ public class WxmpArticleImageController
         return R.success("SUCCESS");
     }
 
-    @Path("/uploadImageByWxmpUrl.do")
+    @Path("/uploadImageByWxmpUrl")
     @POST
     public List<String> uploadImageByWxmpUrl(SimpleTypesReq req) {
         String url = req.getText();

@@ -150,23 +150,23 @@ public class StockTradeMonitorController
         return result;
     }
 
-    @Path(value = "/findNormal.do")
+    @Path(value = "/findNormal")
     @POST
     public List<StockTradeMonitorPO> findNormal() {
         return getService().findNormal();
     }
 
-    @Path(value = "/markAsTraded.do")
+    @Path(value = "/markAsTraded")
     public Boolean markAsTraded(SimpleTypesReq req) {
         return getService().markAsTraded(req);
     }
 
-    @Path(value = "/feign/markAsTraded.do")
+    @Path(value = "/feign/markAsTraded")
     public Boolean feignMarkAsTraded(SimpleTypesReq req) {
         return markAsTraded(req);
     }
 
-    @Path(value = "/tryHedge.do")
+    @Path(value = "/tryHedge")
     public AutoToHedgeTradeResp tryHedge() {
         return getService().tryHedge();
     }

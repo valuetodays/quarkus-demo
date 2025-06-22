@@ -20,13 +20,13 @@ public class StockHistoryPriceController {
     @Inject
     StockHistoryPriceServiceImpl stockHistoryPriceService;
 
-    @Path("/findAllByCode.do")
+    @Path("/findAllByCode")
     @POST
     public List<StockHistoryPricePO> findAllByCode(@Valid StockMinutePriceFindAllByCodeReq req) {
         return stockHistoryPriceService.findAllByCode(req.getCode());
     }
 
-    @Path("/refreshOneFully.do")
+    @Path("/refreshOneFully")
     @POST
 //    @Async
     public void refreshOneFully(@Valid StockMinutePriceRefreshOneReq req) {

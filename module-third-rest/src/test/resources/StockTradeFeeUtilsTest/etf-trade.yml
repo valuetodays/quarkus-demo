@@ -1,0 +1,28 @@
+trades:
+  - buy: true
+    quantity: 400
+    price: 3.795
+    yongjinFee: 0.1
+    yinhuaFee: 0
+    guohuFee: 0
+  - buy: false
+    quantity: 2500
+    price: 1.1
+    yongjinFee: 0.14
+    yinhuaFee: 0
+    guohuFee: 0
+  - buy: false
+    code: '520890'
+    quantity: 2500
+    price: 1.1710
+    yongjinFee: 0.150
+    yinhuaFee: 0
+    guohuFee: 0
+  - buy: true
+    code: '513360'
+    quantity: 5100
+    price: 0.4810
+    yongjinFee: 0.120
+    yinhuaFee: 0
+    guohuFee: 0
+

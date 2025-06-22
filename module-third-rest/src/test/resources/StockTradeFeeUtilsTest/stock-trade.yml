@@ -1,0 +1,107 @@
+trades:
+  - buy: true
+    code: '600036'
+    quantity: 100
+    price: 39.3500
+    yongjinFee: 0.3400
+    yinhuaFee: 0
+    guohuFee: 0.0400
+  - buy: true
+    code: '600036'
+    quantity: 1000
+    price: 33.3600
+    yongjinFee: 2.880
+    yinhuaFee: 0
+    guohuFee: 0.330
+  - buy: false
+    code: '600036'
+    quantity: 1000
+    price: 33.4900
+    yongjinFee: 2.890
+    yinhuaFee: 16.750
+    guohuFee: 0.330
+  - buy: true
+    code: '600036'
+    quantity: 1000
+    price: 33.6600
+    yongjinFee: 2.910
+    yinhuaFee: 0
+    guohuFee: 0.340
+  - buy: false
+    code: '600036'
+    quantity: 1000
+    price: 33.7600
+    yongjinFee: 2.920
+    yinhuaFee: 16.880
+    guohuFee: 0.340
+  - buy: false
+    code: '002142'
+    quantity: 2800
+    price: 21.3300
+    yongjinFee: 5.160
+    yinhuaFee: 29.860
+    guohuFee: 0
+  - buy: true
+    code: '002142'
+    quantity: 1000
+    price: 21.2300
+    yongjinFee: 1.830
+    yinhuaFee: 0
+    guohuFee: 0
+  - buy: false
+    code: '600036'
+    quantity: 800
+    price: 32.6800
+    yongjinFee: 2.260
+    yinhuaFee: 13.070
+    guohuFee: 0.260
+  - buy: true
+    code: '002142'
+    quantity: 2000
+    price: 21.1400
+    yongjinFee: 3.650
+    yinhuaFee: 0
+    guohuFee: 0
+  - buy: false
+    code: '002142'
+    quantity: 2000
+    price: 21.2500
+    yongjinFee: 3.670
+    yinhuaFee: 21.250
+    guohuFee: 0
+  - buy: false
+    code: '600036'
+    quantity: 800
+    price: 32.7600
+    yongjinFee: 2.260
+    yinhuaFee: 13.100
+    guohuFee: 0.260
+  - buy: true
+    code: '600036'
+    quantity: 800
+    price: 32.6500
+    yongjinFee: 2.260
+    yinhuaFee: 0
+    guohuFee: 0.260
+  - buy: true
+    code: '600036'
+    quantity: 100
+    price: 39.7000
+    yongjinFee: 0.340
+    yinhuaFee: 0
+    guohuFee: 0.040
+  - buy: false
+    code: '600036'
+    quantity: 100
+    price: 39.7900
+    yongjinFee: 0.340
+    yinhuaFee: 1.990
+    guohuFee: 0.040
+  - buy: false
+    code: '600036'
+    quantity: 100
+    price: 39.5500
+    yongjinFee: 0.340
+    yinhuaFee: 1.980
+    guohuFee: 0.040
+

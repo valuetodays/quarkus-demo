@@ -1,19 +1,20 @@
 package cn.valuetodays.api2.basic.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
 import cn.valuetodays.api2.basic.vo.LeftDaysInLifeReq;
 import cn.valuetodays.api2.basic.vo.LeftDaysInLifeResp;
 import cn.vt.R;
-import cn.vt.core.Title;
 import cn.vt.util.DateUtils;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import org.apache.commons.collections4.CollectionUtils;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 /**
  * .
@@ -21,9 +22,10 @@ import java.util.List;
  * @author lei.liu
  * @since 2023-04-27 16:36
  */
+@Tag(name = "生命倒计时")
 @Path("/lifeDays")
 public class LifeDaysController {
-    @Title({"生命倒计时", "生命中剩余天数"})
+    @Operation(description = "【默认】生命倒计时 / 生命中剩余天数")
     @Path("/defaultLeftDaysInLife")
     @POST
     public R<List<LeftDaysInLifeResp>> defaultLeftDaysInLife() {
@@ -34,7 +36,7 @@ public class LifeDaysController {
         return (this.leftDaysInLifeBatch(List.of(req)));
     }
 
-    @Title({"生命倒计时", "生命中剩余天数"})
+    @Operation(description = "生命倒计时 / 生命中剩余天数")
     @Path("/leftDaysInLife")
     @POST
     public R<LeftDaysInLifeResp> leftDaysInLife(@Valid LeftDaysInLifeReq req) {
@@ -65,7 +67,7 @@ public class LifeDaysController {
         return resp;
     }
 
-    @Title({"生命倒计时(批量)", "生命中剩余天数(批量)"})
+    @Operation(description = "生命倒计时(批量) / 生命中剩余天数(批量)")
     @Path("/leftDaysInLifeBatch")
     @POST
     public R<List<LeftDaysInLifeResp>> leftDaysInLifeBatch(List<LeftDaysInLifeReq> reqList) {

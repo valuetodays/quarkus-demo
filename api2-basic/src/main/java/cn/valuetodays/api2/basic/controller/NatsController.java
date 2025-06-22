@@ -10,6 +10,8 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 /**
  * .
@@ -17,13 +19,17 @@ import org.apache.commons.lang3.StringUtils;
  * @author lei.liu
  * @since 2024-12-16
  */
+@Tag(name = "nats服务")
 @Path("/nats")
 @Slf4j
 public class NatsController extends RunAsync {
 
     @Inject
-    private IVtNatsClient vtNatsClient;
+    IVtNatsClient vtNatsClient;
 
+    @Operation(
+        description = "推送消息"
+    )
     @Path("/anon/publish.do")
     @POST
     public void publish(SimpleTypesReq msg) {

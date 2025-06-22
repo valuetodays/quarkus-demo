@@ -39,6 +39,7 @@ public class StockHoldersServiceImpl
     SqlServiceImpl sqlService;
 
 
+    @Transactional
     public int saveAllHolders(SaveAllHoldersReq req, Long currentAccountId) {
         List<HolderInfo> holderInfos = req.getHolderInfos();
         if (CollectionUtils.isEmpty(holderInfos)) {

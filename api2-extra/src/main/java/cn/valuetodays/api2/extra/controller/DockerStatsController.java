@@ -64,7 +64,9 @@ public class DockerStatsController extends RunAsync {
             List<DockerStatsReq> dockerStatsReqs = JsonUtils.fromJson(json, new TypeReference<List<DockerStatsReq>>() {
             });
             for (DockerStatsReq obj : dockerStatsReqs) {
-                dockerStatsService.save(obj.toPersist());
+                DockerStatsPersist persist = obj.toPersist();
+                persist.initUserIdAndTime(1L);
+                dockerStatsService.save(persist);
             }
         });
         return Map.of("data", 1, "code", 0, "time", System.currentTimeMillis()); // <4>

@@ -64,7 +64,7 @@ public class SqlServiceImpl {
         try (Connection conn = dataSource.getConnection()) {
             return runner.query(conn, sql, new BeanListHandler<T>(clazz), params);
         } catch (Exception e) {
-            log.error("error when queryForObject", e);
+            log.error("error when queryForList", e);
         }
         return List.of();
     }
@@ -73,7 +73,7 @@ public class SqlServiceImpl {
         try (Connection conn = dataSource.getConnection()) {
             return runner.batch(conn, sql, batchArgs.toArray(new Object[0][]));
         } catch (Exception e) {
-            log.error("error when queryForObject", e);
+            log.error("error when batchUpdate", e);
         }
         return new int[0];
     }
@@ -82,7 +82,7 @@ public class SqlServiceImpl {
         try (Connection conn = dataSource.getConnection()) {
             runner.execute(conn, sql);
         } catch (Exception e) {
-            log.error("error when queryForObject", e);
+            log.error("error when execute", e);
         }
     }
 }

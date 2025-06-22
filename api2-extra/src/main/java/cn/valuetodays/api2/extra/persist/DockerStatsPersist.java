@@ -1,4 +1,6 @@
-package cn.valuetodays.api2.client.persist;
+package cn.valuetodays.api2.extra.persist;
+
+import java.time.LocalDateTime;
 
 import cn.valuetodays.quarkus.commons.base.jpa.JpaCrudLongIdBasePersist;
 import jakarta.persistence.Column;
@@ -7,12 +9,10 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(schema = "db_test", catalog = "db_test", name = "metric_docker_stats")
+@Table(name = "extra_metric_docker_stats")
 public class DockerStatsPersist extends JpaCrudLongIdBasePersist {
     @Column(name = "stat_datetime")
     private LocalDateTime statDatetime;

@@ -1,6 +1,6 @@
-package cn.valuetodays.api2.web.repository;
+package cn.valuetodays.api2.extra.dao;
 
-import cn.valuetodays.api2.client.persist.DockerStatsPersist;
+import cn.valuetodays.api2.extra.persist.DockerStatsPersist;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -1,12 +1,12 @@
-package cn.valuetodays.api2.client.vo.save;
-
-import cn.valuetodays.api2.client.persist.DockerStatsPersist;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+package cn.valuetodays.api2.extra.reqresp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import cn.valuetodays.api2.extra.persist.DockerStatsPersist;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * .

@@ -1,4 +1,4 @@
-package cn.valuetodays.api2.web.controller;
+package cn.valuetodays.api2.extra.controller;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -7,10 +7,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import cn.valuetodays.api2.client.persist.DockerStatsPersist;
-import cn.valuetodays.api2.client.vo.save.DockerStatsReq;
-import cn.valuetodays.api2.web.service.DockerStatsService;
+import cn.valuetodays.api2.extra.persist.DockerStatsPersist;
+import cn.valuetodays.api2.extra.reqresp.DockerStatsReq;
+import cn.valuetodays.api2.extra.service.DockerStatsService;
 import cn.valuetodays.quarkus.commons.base.RunAsync;
+import cn.vt.exception.CommonException;
 import cn.vt.util.JsonUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.enterprise.context.RequestScoped;
@@ -50,7 +51,7 @@ public class DockerStatsController extends RunAsync {
     }
 
     @POST
-    @Path("saveByText")
+    @Path("/public/saveByText")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Map<String, Object> saveByText(MultipartFormDataInput dataInput) {
         String text = getFileContentAsString(dataInput, "file", StandardCharsets.US_ASCII);
@@ -82,7 +83,7 @@ public class DockerStatsController extends RunAsync {
         try {
             return FileUtils.readFileToString(file.toFile(), charset);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new CommonException(e);
         }
     }
 }

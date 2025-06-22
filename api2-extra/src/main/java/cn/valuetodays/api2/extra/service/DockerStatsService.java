@@ -1,7 +1,7 @@
-package cn.valuetodays.api2.web.service;
+package cn.valuetodays.api2.extra.service;
 
-import cn.valuetodays.api2.client.persist.DockerStatsPersist;
-import cn.valuetodays.api2.web.repository.DockerStatsRepository;
+import cn.valuetodays.api2.extra.dao.DockerStatsRepository;
+import cn.valuetodays.api2.extra.persist.DockerStatsPersist;
 import cn.valuetodays.quarkus.commons.base.BaseCrudService;
 import jakarta.enterprise.context.ApplicationScoped;
 

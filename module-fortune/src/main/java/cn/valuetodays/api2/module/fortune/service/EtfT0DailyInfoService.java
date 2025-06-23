@@ -42,7 +42,7 @@ public class EtfT0DailyInfoService
     @Inject
     EtfT0DailyInfoModule etfT0DailyInfoModule;
     @Inject
-    private SqlServiceImpl sqlService;
+    SqlServiceImpl sqlService;
 
     public int refresh() {
         List<EtfT0PO> etfT0s = etfT0DAO.listAll();

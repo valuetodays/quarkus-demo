@@ -1,10 +1,13 @@
 package cn.valuetodays.api2.web.module.fortune.controller;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import cn.valuetodays.api2.module.fortune.client.persist.EtfT0DailyInfoPersist;
 import cn.valuetodays.api2.module.fortune.client.reqresp.T0DailyChartReq;
@@ -18,12 +21,12 @@ import cn.vt.rest.third.sse.SseEtfClientUtils;
 import cn.vt.rest.third.sse.vo.TotalSharesResp;
 import cn.vt.util.DateUtils;
 import cn.vt.web.RestPageImpl;
+import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 
 /**
  * Tests for {@link EtfT0DailyInfoService}.
@@ -31,14 +34,48 @@ import org.junit.jupiter.api.condition.OS;
  * @author lei.liu
  * @since 2025-01-04
  */
-@EnabledOnOs(OS.WINDOWS)
+//@EnabledOnOs(OS.WINDOWS)
 @Slf4j
+@QuarkusTest
 public class EtfT0DailyInfoServiceTest {
 
     @Inject
-    private EtfT0DailyInfoService etfT0DailyInfoService;
+    EtfT0DailyInfoService etfT0DailyInfoService;
     @Inject
-    private SqlServiceImpl jdbcTemplate;
+    SqlServiceImpl jdbcTemplate;
+
+    /**
+     * 计算涨跌幅
+     *
+     * @param closePxBe closePxBe
+     * @param closePxAf closePxAf
+     * @return
+     */
+    private static BigDecimal calcOffset(BigDecimal closePxBe, BigDecimal closePxAf) {
+        return closePxAf.subtract(closePxBe)
+            .multiply(BigDecimal.valueOf(100))
+            .divide(closePxAf, 4, RoundingMode.HALF_UP)
+            ;
+    }
+
+    @Test
+    public void checkOffsetBased924() {
+        List<EtfT0DailyInfoPersist> befores = etfT0DailyInfoService.findAllByStatDate(20240924);
+        List<EtfT0DailyInfoPersist> afters = etfT0DailyInfoService.findAllByStatDate(20250620);
+        log.info("befores={}", befores);
+        log.info("afters={}", afters);
+        Map<String, EtfT0DailyInfoPersist> beforeMap = befores.stream()
+            .collect(Collectors.toMap(EtfT0DailyInfoPersist::getCode, e -> e));
+        for (EtfT0DailyInfoPersist af : afters) {
+            EtfT0DailyInfoPersist be = beforeMap.get(af.getCode());
+            if (ObjectUtils.allNotNull(be, af)) {
+                BigDecimal closePxBe = be.getClosePx();
+                BigDecimal closePxAf = af.getClosePx();
+                BigDecimal offset = calcOffset(closePxBe, closePxAf);
+                log.info("code={} offset={}%, closePxBe={}, closePxAf={}", af.getCode(), offset, closePxBe, closePxAf);
+            }
+        }
+    }
 
     @Test
     void refresh() {

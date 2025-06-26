@@ -103,6 +103,7 @@ public class StockTradeServiceImpl
         return DateUtils.formatAsYyyyMMdd(preTradeDateLd);
     }
 
+    @Transactional
     public AutoToHedgeTradeResp autoToHedge(int days) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
         if (days <= 0 || days > 180) {
@@ -120,6 +121,7 @@ public class StockTradeServiceImpl
         return resp;
     }
 
+    @Transactional
     public AutoToHedgeTradeResp tryAutoToHedge(String code, boolean dryRun) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
         if (StringUtils.isBlank(code)) {
@@ -145,7 +147,7 @@ public class StockTradeServiceImpl
         return kits.doCheck(list);
     }
 
-
+    @Transactional
     public SaveTradeMonitorByTradeResp saveTradeMonitorByTrade(SimpleTypesReq req) {
         List<Long> tradeIds = parseTextAsTradeIds(req);
 
@@ -177,9 +179,6 @@ public class StockTradeServiceImpl
                     monitorPO.setRemark(remark);
                     monitorPO.setTradeId(one.getId());
                     monitorPO.initUserIdAndTime(one.getAccountId());
-                    // 将StockTradePO#id与StockTradeMonitorPO#id保持一致
-                    // setId()要在 initUserIdAndTime()之后
-                    monitorPO.setId(one.getId());
                     try {
                         stockTradeMonitorDAO.persist(monitorPO);
                         result = "OK";
@@ -530,6 +529,7 @@ public class StockTradeServiceImpl
         }
 
 
+    @Transactional
     public AutoToHedgeTradeResp autoHedgePairTrade(Map<String, String> pairsUniqueId, int days) {
         AutoToHedgeTradeResp resp = new AutoToHedgeTradeResp();
 

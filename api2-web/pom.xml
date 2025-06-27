@@ -41,6 +41,12 @@
             <groupId>cn.valuetodays.api2</groupId>
             <artifactId>module-spider</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>cn.valuetodays.api2</groupId>

@@ -58,6 +58,7 @@ public class QuoteValueServiceImpl
             }
             return true;
         } catch (Exception e) {
+            log.error("refresh error", e);
             return false;
         }
     }

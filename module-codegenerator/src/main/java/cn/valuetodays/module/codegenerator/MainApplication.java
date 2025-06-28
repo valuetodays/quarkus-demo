@@ -1,6 +1,14 @@
 package cn.valuetodays.module.codegenerator;
 
-import ch.qos.logback.core.util.CloseUtil;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
 import cn.hutool.core.util.ZipUtil;
 import cn.valuetodays.module.codegenerator.advanced.config.Datasource;
 import cn.valuetodays.module.codegenerator.advanced.config.configfile.CgConfig;
@@ -19,15 +27,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.yaml.snakeyaml.Yaml;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author lei.liu
@@ -102,11 +101,11 @@ public class MainApplication {
                 if (settingResourceWithoutClasspath.startsWith("/")) {
                     settingResourceWithoutClasspath = settingResourceWithoutClasspath.substring("/".length());
                 }
-                InputStream in = Thread.currentThread().getContextClassLoader()
-                    .getResourceAsStream(settingResourceWithoutClasspath);
-                tableClasses = yaml.loadAs(in, TableClasses.class);
-                database = new FileDatabase(tableClasses);
-                CloseUtil.closeQuietly(in);
+                try (InputStream in =
+                         Thread.currentThread().getContextClassLoader().getResourceAsStream(settingResourceWithoutClasspath)) {
+                    tableClasses = yaml.loadAs(in, TableClasses.class);
+                    database = new FileDatabase(tableClasses);
+                }
             } else {
                 resp.setMsg("not support");
                 return;

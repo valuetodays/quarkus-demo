@@ -79,6 +79,12 @@
             <groupId>cn.valuetodays</groupId>
             <artifactId>common-spring-web</artifactId>
             <version>${vt.common-spring-web.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.sejda.imageio/webp-imageio -->
         <dependency>

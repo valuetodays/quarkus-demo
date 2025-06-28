@@ -59,8 +59,9 @@ quarkus:
     vocechat-api:
       url: ${vt.vocechat.base-path}
   log:
+    debug: true
     level: INFO
-    handlers: ["console", "file"]
+    #    handlers: ["console", "file"]
     console:
       enable: true
     file:

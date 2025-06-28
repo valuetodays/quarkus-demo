@@ -22,6 +22,12 @@
             <groupId>cn.vt.commons</groupId>
             <artifactId>common-spring-web</artifactId>
             <version>${vt-simple-common-modules.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

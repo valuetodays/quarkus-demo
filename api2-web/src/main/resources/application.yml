@@ -70,10 +70,10 @@ quarkus:
         max-file-size: 10M
         max-backup-index: 15
         file-suffix: .yyyy-MM-dd
-    category:
-      "cn.valuetodays.api2":
-        level: INFO
-        handlers: [ "file", "console" ]
+#    category:
+#      "cn.valuetodays.api2":
+#        level: INFO
+#        handlers: [ "file", "console" ]
 
 hello: hello,dev
 

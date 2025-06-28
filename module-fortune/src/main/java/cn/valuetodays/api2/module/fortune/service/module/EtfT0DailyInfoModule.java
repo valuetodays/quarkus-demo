@@ -67,7 +67,7 @@ public class EtfT0DailyInfoModule {
         old.setStatDate(DateUtils.formatAsYyyyMMdd(localDate));
         old.setYiJiaPtgIfAbsent(EtfT0DailyInfoPersist.DEFAULT_YI_JIA_PTG);
         old.setTotalSharesWanIfAbsent(EtfT0DailyInfoPersist.DEFAULT_TOTAL_SHARES_WAN);
-
+        old.initUserIdAndTime(1L);
         etfT0DailyInfoDAO.persist(old);
         return 1;
     }

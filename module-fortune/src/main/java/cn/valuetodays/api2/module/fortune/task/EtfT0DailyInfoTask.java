@@ -1,7 +1,9 @@
 package cn.valuetodays.api2.module.fortune.task;
 
 import cn.valuetodays.api2.module.fortune.service.EtfT0DailyInfoService;
+import cn.valuetodays.quarkus.commons.base.RunAsync;
 import io.quarkus.scheduler.Scheduled;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -12,14 +14,17 @@ import jakarta.inject.Inject;
  * @since 2025-01-04
  */
 @ApplicationScoped
-public class EtfT0DailyInfoTask {
+public class EtfT0DailyInfoTask extends RunAsync {
     @Inject
     EtfT0DailyInfoService etfT0DailyInfoService;
 
     @Scheduled(cron = "1 2 15 * * ?") // 每天15:02:01
+    @PostConstruct
 //    @DistributeLock(id = "scheduleRefresh", milliSeconds = TimeConstants.T3m)
     public void scheduleRefresh() {
-        etfT0DailyInfoService.refresh();
+        super.executeAsync(() -> {
+            etfT0DailyInfoService.refresh();
+        });
     }
 
     @Scheduled(cron = "1 15 19 * * ?") // 每天19:15:01

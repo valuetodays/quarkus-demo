@@ -59,6 +59,9 @@ quarkus:
     vocechat-api:
       url: ${vt.vocechat.base-path}
   log:
+    level: INFO
+    console:
+      enable: true
     file:
       enable: true
       path: /root/workbench/logs/valuetodays-api-by-quarkus/valuetodays-api-by-quarkus.log
@@ -67,11 +70,10 @@ quarkus:
         max-file-size: 10M
         max-backup-index: 15
         file-suffix: .yyyy-MM-dd
-    level: INFO
     category:
       "cn.valuetodays.api2":
         level: INFO
-        handlers: [ "file" ]
+        handlers: [ "file", "console" ]
 
 hello: hello,dev
 

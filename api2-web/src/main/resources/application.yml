@@ -60,6 +60,7 @@ quarkus:
       url: ${vt.vocechat.base-path}
   log:
     level: INFO
+    handlers: ["console", "file"]
     console:
       enable: true
     file:

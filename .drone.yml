@@ -1,7 +1,7 @@
 # for gitee
 kind: pipeline
 type: docker
-name: valuetodays-api-by-quarkus-web-ci/cd
+name: valuetodays-api2-by-quarkus-web-ci/cd
 
 workspace:
   path: /drone/src

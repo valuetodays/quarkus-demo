@@ -66,7 +66,7 @@ quarkus:
       enable: true
     file:
       enable: true
-      path: /root/workbench/logs/valuetodays-api-by-quarkus/valuetodays-api-by-quarkus.log
+      path: /root/workbench/logs/valuetodays-api2-by-quarkus/valuetodays-api2-by-quarkus.log
       rotation:
         rotate-on-boot: true # 是否按服务启动滚动
         max-file-size: 10M

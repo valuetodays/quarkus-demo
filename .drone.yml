@@ -56,7 +56,7 @@ steps:
     commands:
       - |
         echo begin to notify
-        curl -X POST "http://go.valuetodays.cn/api/public/notify/anon/cdci.do" -H 'Content-Type: application/json; charset=utf-8' -d '{"content": "valuetodays-api-by-quarkus was restarted just now.", "repo": "valuetodays-api-by-quarkus"}'
+        curl -X POST "http://go.valuetodays.cn/api/public/notify/anon/cdci.do" -H 'Content-Type: application/json; charset=utf-8' -d '{"content": "valuetodays-api2-by-quarkus was restarted just now.", "repo": "valuetodays-api2-by-quarkus"}'
       - echo end
   - name: restart application by docker-compose
     image: docker/compose:1.23.1

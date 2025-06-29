@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>cn.valuetodays.api2</groupId>
-        <artifactId>api2-by-quarkus</artifactId>
+        <artifactId>valuetodays-api2-by-quarkus</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
